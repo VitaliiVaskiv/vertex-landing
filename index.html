@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VERTEX.UA — базовий одяг</title>
+
+  <!-- Підключення Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body class="bg-white text-[#111111] font-['Inter',sans-serif] antialiased">
+
+  <!-- Смужка анонсів -->
+  <aside class="bg-[#111111] text-white text-center py-2 px-2 text-[10px] sm:text-xs tracking-widest font-semibold uppercase">
+    ПОШИТО В УКРАЇНІ · БЕЗКОШТОВНИЙ ПІДБІР РОЗМІРУ · НОВА КАПСУЛА ВЖЕ В НАЯВНОСТІ
+  </aside>
+
+  <!-- Шапка -->
+  <header class="bg-white border-b border-[#111111] relative z-50">
+    <div class="flex items-center justify-between px-6 py-4 lg:px-12 w-full">
+      
+      <!-- Логотип -->
+      <a href="/" class="flex-shrink-0">
+        <img src="assets/images/logo.svg" alt="VERTEX.UA" class="h-6 md:h-8 w-auto">
+      </a>
+
+      <!-- Навігація (Десктоп) -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#catalog" class="text-[0.75rem] font-bold uppercase hover:opacity-60 transition-opacity">Каталог</a>
+        <a href="#calculator" class="text-[0.75rem] font-bold uppercase hover:opacity-60 transition-opacity">Розумний підбір</a>
+        <a href="#features" class="text-[0.75rem] font-bold uppercase hover:opacity-60 transition-opacity">Про бренд</a>
+        <a href="#contacts" class="text-[0.75rem] font-bold uppercase hover:opacity-60 transition-opacity">Контакти</a>
+      </nav>
+
+      <!-- Правий блок: Пошук, Кошик -->
+      <div class="flex items-center gap-5 lg:gap-6">
+        
+        <!-- Адаптивний рядок пошуку (тільки на ПК) -->
+        <div class="hidden md:block relative">
+          <input type="text" placeholder="ПОШУК..." class="border border-[#111111] bg-transparent py-1.5 pl-3 pr-8 text-[0.7rem] font-bold uppercase placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-[#111111] w-32 lg:w-48 transition-all">
+          <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 text-[#111111] hover:opacity-60">
+            <i class="fa-solid fa-magnifying-glass text-xs"></i>
+          </button>
+        </div>
+
+        <!-- Іконка кошика з динамічним індикатором (Badge) -->
+        <a href="#catalog" class="relative text-[#111111] hover:opacity-60 transition-opacity flex items-center">
+          <i class="fa-solid fa-bag-shopping text-xl"></i>
+          <!-- Індикатор кількості (Badge) -->
+          <span class="absolute -top-1.5 -right-2 bg-[#111111] text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full border border-white">
+            2
+          </span>
+        </a>
+        
+        <!-- Кнопка Бургер (тільки на мобільному) -->
+        <button id="mobile-menu-btn" class="md:hidden text-2xl text-[#111111] focus:outline-none ml-1">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Мобільне випадаюче меню -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#111111] px-6 py-4 flex-col gap-4 absolute w-full left-0 top-full shadow-lg">
+      
+      <!-- Рядок пошуку (Адаптив: переїхав у мобільне меню) -->
+      <div class="relative w-full mb-2">
+        <input type="text" placeholder="ПОШУК ТОВАРІВ..." class="w-full border border-[#111111] bg-transparent py-3 pl-4 pr-10 text-xs font-bold uppercase placeholder-[#666666] focus:outline-none">
+        <button type="submit" class="absolute right-4 top-1/2 -translate-y-1/2 text-[#111111]">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+      <a href="#catalog" class="block text-sm font-bold uppercase py-2 hover:opacity-60">Каталог</a>
+      <a href="#calculator" class="block text-sm font-bold uppercase py-2 hover:opacity-60">Розумний підбір</a>
+      <a href="#features" class="block text-sm font-bold uppercase py-2 hover:opacity-60">Про бренд</a>
+      <a href="#contacts" class="block text-sm font-bold uppercase py-2 hover:opacity-60">Контакти</a>
+    </div>
+  </header>
+
+  <!-- Скрипт мобільного меню -->
+  <script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+    });
+  </script>
+
+  <main>
+    
+    <!-- Hero Секція -->
+    <section class="relative flex items-center min-h-[80vh] py-20 px-6 lg:px-20 z-10 overflow-hidden border-b border-[#111111]">
+      <div class="absolute inset-0 -z-20 bg-[url('assets/images/hero_bg_web.jpg')] bg-cover bg-[center_right] bg-no-repeat"></div>
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-[#111111] via-[#111111]/80 to-transparent"></div>
+      
+      <div class="max-w-[650px] z-20">
+        <h1 class="text-white text-[2.5rem] md:text-[3.5rem] leading-[1.1] font-bold mb-6 tracking-tight">
+          Базовий одяг<br>зручного крою, що<br>сідає бездоганно.
+        </h1>
+        <p class="text-[#cccccc] text-[1rem] md:text-[1.1rem] leading-relaxed mb-10 max-w-[500px]">
+          Капсульний міський гардероб зі щільної бавовни. Розумний алгоритм розраховує ваш точний розмір за 30 секунд.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 w-full">
+          <a href="#calculator" class="inline-flex items-center justify-center border-2 border-transparent bg-[#2a2a2a] text-white px-8 py-4 text-[0.75rem] font-bold uppercase hover:bg-white hover:text-[#111111] hover:border-[#111111] transition-all duration-300 w-full sm:w-auto">
+            Підібрати розмір
+          </a>
+          <a href="#catalog" class="inline-flex items-center justify-center bg-white text-[#111111] px-8 py-4 text-[0.75rem] font-bold uppercase hover:bg-[#e0e0e0] transition-colors duration-300 w-full sm:w-auto">
+            Каталог
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Блок Статистики -->
+    <div class="grid grid-cols-3 divide-x divide-[#111111] border-b border-[#111111]">
+      <div class="p-4 md:p-8 flex flex-col justify-center">
+        <p class="text-2xl md:text-4xl font-bold m-0">30 с</p>
+        <p class="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#666666] mt-1 md:mt-2">на підбір розміру</p>
+      </div>
+      <div class="p-4 md:p-8 flex flex-col justify-center">
+        <p class="text-2xl md:text-4xl font-bold m-0">UA</p>
+        <p class="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#666666] mt-1 md:mt-2">пошито в україні</p>
+      </div>
+      <div class="p-4 md:p-8 flex flex-col justify-center">
+        <p class="text-2xl md:text-4xl font-bold m-0">0</p>
+        <p class="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#666666] mt-1 md:mt-2">очікувань</p>
+      </div>
+    </div>
+
+    <!-- Блок Переваг -->
+    <section id="features" class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#111111] border-b border-[#111111]">
+      <div class="p-8 md:p-12">
+        <div class="w-10 h-10 bg-[#111111] text-white flex items-center justify-center font-bold text-sm mb-6">01</div>
+        <h2 class="text-xl font-bold mb-3">Точна посадка</h2>
+        <p class="text-sm text-[#666666] leading-relaxed">Лекала побудовані на реальних пропорціях. Річ відмінно тримається на плечах, а не на вішалках.</p>
+      </div>
+      <div class="p-8 md:p-12">
+        <div class="w-10 h-10 bg-[#111111] text-white flex items-center justify-center font-bold text-sm mb-6">02</div>
+        <h2 class="text-xl font-bold mb-3">Локальне виробництво</h2>
+        <p class="text-sm text-[#666666] leading-relaxed">Крій і пошиття в Україні: короткий ланцюг постачання та контроль якості на кожному етапі.</p>
+      </div>
+      <div class="p-8 md:p-12">
+        <div class="w-10 h-10 bg-[#111111] text-white flex items-center justify-center font-bold text-sm mb-6">03</div>
+        <h2 class="text-xl font-bold mb-3">Еко-матеріали</h2>
+        <p class="text-sm text-[#666666] leading-relaxed">Щільна бавовна, що служить роками, і мінімум пакування. Базові речі, які не потрібно міняти щосезону.</p>
+      </div>
+    </section>
+
+    <!-- Каталог -->
+    <section id="catalog" class="py-16 md:py-24 px-6 lg:px-12 border-b border-[#111111]">
+      <header class="flex items-end justify-between mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Каталог</h2>
+        <a href="#" class="text-xs font-bold uppercase tracking-widest border-b border-[#111111] pb-1 hover:text-[#666666] transition-colors hidden sm:block">Усі товари →</a>
+      </header>
+
+      <!-- На мобільному 2 колонки, на ПК 4 колонки -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        
+        <!-- Товар 1 -->
+        <article class="flex flex-col h-full border border-[#111111] p-3 md:p-4 bg-white hover:shadow-lg transition-all duration-300 group">
+          <div class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111]">
+            <img src="assets/images/tshirt.jpg" alt="Базова футболка Heavyweight" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="flex flex-col flex-grow justify-between">
+            <div>
+              <h3 class="text-sm md:text-base font-bold leading-tight mb-1">Футболка Heavyweight</h3>
+              <p class="text-xs text-[#666666]">890 ₴</p>
+            </div>
+            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">
+              Додати в кошик
+            </button>
+          </div>
+        </article>
+
+        <!-- Товар 2 -->
+        <article class="flex flex-col h-full border border-[#111111] p-3 md:p-4 bg-white hover:shadow-lg transition-all duration-300 group">
+          <div class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111]">
+            <img src="assets/images/jeans.jpg" alt="Джинси Straight Fit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="flex flex-col flex-grow justify-between">
+            <div>
+              <h3 class="text-sm md:text-base font-bold leading-tight mb-1">Джинси Straight Fit</h3>
+              <p class="text-xs text-[#666666]">1 890 ₴</p>
+            </div>
+            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">
+              Додати в кошик
+            </button>
+          </div>
+        </article>
+
+        <!-- Товар 3 -->
+        <article class="flex flex-col h-full border border-[#111111] p-3 md:p-4 bg-white hover:shadow-lg transition-all duration-300 group">
+          <div class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111]">
+            <img src="assets/images/hoodie.jpg" alt="Худі Oversize" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="flex flex-col flex-grow justify-between">
+            <div>
+              <h3 class="text-sm md:text-base font-bold leading-tight mb-1">Худі Oversize</h3>
+              <p class="text-xs text-[#666666]">2 190 ₴</p>
+            </div>
+            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">
+              Додати в кошик
+            </button>
+          </div>
+        </article>
+
+        <!-- Товар 4 -->
+        <article class="flex flex-col h-full border border-[#111111] p-3 md:p-4 bg-white hover:shadow-lg transition-all duration-300 group">
+          <div class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111]">
+            <img src="assets/images/sweatshirt.jpg" alt="Світшот Relaxed Fit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="flex flex-col flex-grow justify-between">
+            <div>
+              <h3 class="text-sm md:text-base font-bold leading-tight mb-1">Світшот Relaxed Fit</h3>
+              <p class="text-xs text-[#666666]">1 490 ₴</p>
+            </div>
+            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">
+              Додати в кошик
+            </button>
+          </div>
+        </article>
+
+      </div>
+      <div class="mt-6 text-center sm:hidden">
+        <a href="#" class="text-xs font-bold uppercase tracking-widest border-b border-[#111111] pb-1">Усі товари →</a>
+      </div>
+    </section>
+
+    <!-- Нова Секція: Відео та Карта (Лаба 7: Ембеддинг) -->
+    <section id="about" class="py-16 md:py-24 px-6 lg:px-12 border-b border-[#111111] bg-white">
+      <div class="max-w-[1440px] mx-auto">
+        <header class="mb-10 text-center md:text-left">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Наше виробництво</h2>
+          <p class="text-sm text-[#666666] mt-4 max-w-xl">Подивіться, як створюється базовий одяг VERTEX.UA, та завітайте до нашого шоуруму у Львові.</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          
+          <!-- Ембеддинг 1: YouTube Відео -->
+          <div class="w-full flex flex-col">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-[#111111] mb-3">Процес створення</p>
+            <!-- aspect-video робить його ідеальним прямокутником 16:9 на будь-якому екрані -->
+            <div class="w-full aspect-video border border-[#111111] overflow-hidden group">
+              <iframe 
+                src="https://www.youtube.com/embed/hRw6RC3ExSw?si=I0J9_7JP0PidaC08"
+                title="Процес виробництва одягу"
+                loading="lazy"
+                class="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Ембеддинг 2: Інтерактивна Карта Google Maps -->
+          <div class="w-full flex flex-col">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-[#111111] mb-3">Наш шоурум (Львів)</p>
+            <div class="w-full aspect-video lg:h-full border border-[#111111] p-1 bg-gray-50">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2573.076540122793!2d24.02971701570776!3d49.84195207939615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add6c2e097db9%3A0x7770bc1ea21b2505!2sLviv%20Polytechnic%20National%20University!5e0!3m2!1sen!2sua!4v1680000000000!5m2!1sen!2sua" 
+                title="VERTEX.UA Шоурум"
+                loading="lazy"
+                class="w-full h-full" 
+                style="border:0;" 
+                allowfullscreen="" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Секція "Розумний підбір" -->
+    <section id="calculator" class="py-20 md:py-32 px-6 flex flex-col items-center border-b border-[#111111] bg-[#fafafa]">
+      <p class="text-[10px] font-bold uppercase tracking-widest text-[#666666] mb-4">Smart Sizing</p>
+      <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 max-w-xl leading-tight">Не вгадуйте розмір — знайдіть свій за 30 секунд</h2>
+      
+      <div class="w-full max-w-xl bg-white border-2 border-[#111111] p-6 md:p-10 shadow-[8px_8px_0px_0px_#111111] md:shadow-[12px_12px_0px_0px_#111111]">
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <div class="flex flex-col">
+            <label class="text-[10px] font-bold uppercase tracking-widest mb-2">Зріст</label>
+            <div class="relative">
+              <input type="number" placeholder="180" class="w-full border border-[#111111] p-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111]">
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">см</span>
+            </div>
+          </div>
+          
+          <div class="flex flex-col">
+            <label class="text-[10px] font-bold uppercase tracking-widest mb-2">Вага</label>
+            <div class="relative">
+              <input type="number" placeholder="75" class="w-full border border-[#111111] p-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111]">
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">кг</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="text-[10px] font-bold uppercase tracking-widest mb-2">Обхват грудей</label>
+            <div class="relative">
+              <input type="number" placeholder="98" class="w-full border border-[#111111] p-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111]">
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">см</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="text-[10px] font-bold uppercase tracking-widest mb-2">Обхват талії</label>
+            <div class="relative">
+              <input type="number" placeholder="82" class="w-full border border-[#111111] p-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111]">
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">см</span>
+            </div>
+          </div>
+
+          <button type="button" class="md:col-span-2 bg-[#111111] text-white py-4 mt-2 text-xs font-bold uppercase tracking-widest hover:opacity-80 transition-opacity">
+            Розрахувати розмір
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Підвал (Footer) -->
+  <footer class="bg-white border-t border-[#111111] pt-16 w-full">
+    
+    <div class="px-6 lg:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 mb-12">
+      <!-- Опис -->
+      <div class="lg:pr-10">
+        <p class="font-bold text-base mb-4 text-[#111111]">VERTEX.UA</p>
+        <p class="text-sm text-[#666666] leading-relaxed">Базовий одяг зручного крою. Пошито в Україні.</p>
+      </div>
+
+      <!-- Магазин -->
+      <div>
+        <p class="text-[11px] font-bold uppercase tracking-widest mb-6 text-[#111111]">Магазин</p>
+        <ul class="grid gap-4 text-sm text-[#666666]">
+          <li><a href="#" class="hover:text-[#111111] transition-colors">Каталог</a></li>
+          <li><a href="#" class="hover:text-[#111111] transition-colors">Розумний підбір</a></li>
+          <li><a href="#" class="hover:text-[#111111] transition-colors">Розмірна сітка</a></li>
+        </ul>
+      </div>
+
+      <!-- Бренд -->
+      <div>
+        <p class="text-[11px] font-bold uppercase tracking-widest mb-6 text-[#111111]">Бренд</p>
+        <ul class="grid gap-4 text-sm text-[#666666]">
+          <li><a href="#" class="hover:text-[#111111] transition-colors">Про нас</a></li>
+          <li><a href="#" class="hover:text-[#111111] transition-colors">Виробництво</a></li>
+          <li><a href="#" class="hover:text-[#111111] transition-colors">Матеріали</a></li>
+        </ul>
+      </div>
+
+      <!-- Допомога -->
+      <div>
+        <p class="text-[11px] font-bold uppercase tracking-widest mb-6 text-[#111111]">Допомога</p>
+        <ul class="grid gap-4 text-sm text-[#666666]">
+          <li><a href="#" class="hover:text-[#111111] transition-colors">Доставка</a></li>
+          <li><a href="#" class="hover:text-[#111111] transition-colors">Повернення</a></li>
+          <li><a href="#" class="hover:text-[#111111] transition-colors">Контакти</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Картинка-логотип -->
+    <div class="w-full">
+      <img src="assets/images/logo.svg" alt="VERTEX.UA" class="block w-full h-auto">
+    </div>
+
+    <!-- Копірайт -->
+    <div class="border-t-[3px] border-[#111111] px-6 lg:px-12 py-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-[#111111] font-bold uppercase tracking-[0.15em]">
+        <p>© 2026 VERTEX.UA</p>
+        <p>Зроблено в Україні</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
