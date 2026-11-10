@@ -77,7 +77,7 @@
     <!-- Мобільне випадаюче меню -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#111111] px-6 py-4 flex-col gap-4 absolute w-full left-0 top-full shadow-lg">
       
-      <!-- Рядок пошуку (Адаптив: переїхав у мобільне меню) -->
+      <!-- Рядок пошуку -->
       <div class="relative w-full mb-2">
         <input type="text" placeholder="ПОШУК ТОВАРІВ..." class="w-full border border-[#111111] bg-transparent py-3 pl-4 pr-10 text-xs font-bold uppercase placeholder-[#666666] focus:outline-none">
         <button type="submit" class="absolute right-4 top-1/2 -translate-y-1/2 text-[#111111]">
@@ -110,11 +110,15 @@
       <div class="absolute inset-0 -z-10 bg-gradient-to-r from-[#111111] via-[#111111]/80 to-transparent"></div>
       
       <div class="max-w-[650px] z-20">
-        <!-- Лаба 10: Додано span для ефекту друку Typed.js -->
-        <h1 class="text-white text-[2.5rem] md:text-[3.5rem] leading-[1.1] font-bold mb-6 tracking-tight">
-          Базовий одяг<br>зручного крою, що<br>сідає бездоганно.<br>
-          <span id="typed-text" class="text-[#cccccc] text-2xl md:text-3xl mt-2 block h-10"></span>
+        <h1 class="text-white text-[2.5rem] md:text-[3.5rem] leading-[1.1] font-bold mb-4 tracking-tight">
+          Базовий одяг<br>зручного крою, що<br>сідає бездоганно.
         </h1>
+        
+        <!-- Лаба 10: Фіксований контейнер для ефекту друку, щоб нічого не стрибало -->
+        <div class="h-8 md:h-10 mb-8 flex items-center">
+          <span id="typed-text" class="bg-white text-[#111111] px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] inline-block shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)]"></span>
+        </div>
+
         <p class="text-[#cccccc] text-[1rem] md:text-[1.1rem] leading-relaxed mb-10 max-w-[500px]">
           Капсульний міський гардероб зі щільної бавовни. Розумний алгоритм розраховує ваш точний розмір за 30 секунд.
         </p>
@@ -168,96 +172,108 @@
     <section id="catalog" class="py-16 md:py-24 px-6 lg:px-12 border-b border-[#111111]">
       <header class="flex items-end justify-between mb-10">
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Каталог</h2>
-        <a href="#" class="text-xs font-bold uppercase tracking-widest border-b border-[#111111] pb-1 hover:text-[#666666] transition-colors hidden sm:block">Усі товари →</a>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-[#666666] hidden md:block">Натисніть на фото для перегляду</p>
       </header>
 
-      <!-- На мобільному 2 колонки, на ПК 4 колонки -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         
         <!-- Товар 1 -->
         <article class="flex flex-col h-full border border-[#111111] p-3 md:p-4 bg-white hover:shadow-lg transition-all duration-300 group">
-          <div class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111]">
-            <img src="assets/images/tshirt.jpg" alt="Базова футболка Heavyweight" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
+          <!-- Лаба 10: Інтеграція Fancybox у каталог (data-fancybox="catalog") -->
+          <a href="assets/images/tshirt.jpg" data-fancybox="catalog" data-caption="Футболка Heavyweight" class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111] block cursor-zoom-in relative">
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all z-10 flex items-center justify-center">
+              <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition-opacity"></i>
+            </div>
+            <img src="assets/images/tshirt.jpg" alt="Базова футболка Heavyweight" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 relative z-0">
+          </a>
           <div class="flex flex-col flex-grow justify-between">
             <div>
               <h3 class="text-sm md:text-base font-bold leading-tight mb-1">Футболка Heavyweight</h3>
               <p class="text-xs text-[#666666]">890 ₴</p>
             </div>
-            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">
-              Додати в кошик
-            </button>
+            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">Додати в кошик</button>
           </div>
         </article>
 
         <!-- Товар 2 -->
         <article class="flex flex-col h-full border border-[#111111] p-3 md:p-4 bg-white hover:shadow-lg transition-all duration-300 group">
-          <div class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111]">
-            <img src="assets/images/jeans.jpg" alt="Джинси Straight Fit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
+          <a href="assets/images/jeans.jpg" data-fancybox="catalog" data-caption="Джинси Straight Fit" class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111] block cursor-zoom-in relative">
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all z-10 flex items-center justify-center">
+              <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition-opacity"></i>
+            </div>
+            <img src="assets/images/jeans.jpg" alt="Джинси Straight Fit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 relative z-0">
+          </a>
           <div class="flex flex-col flex-grow justify-between">
             <div>
               <h3 class="text-sm md:text-base font-bold leading-tight mb-1">Джинси Straight Fit</h3>
               <p class="text-xs text-[#666666]">1 890 ₴</p>
             </div>
-            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">
-              Додати в кошик
-            </button>
+            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">Додати в кошик</button>
           </div>
         </article>
 
         <!-- Товар 3 -->
         <article class="flex flex-col h-full border border-[#111111] p-3 md:p-4 bg-white hover:shadow-lg transition-all duration-300 group">
-          <div class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111]">
-            <img src="assets/images/hoodie.jpg" alt="Худі Oversize" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
+          <a href="assets/images/hoodie.jpg" data-fancybox="catalog" data-caption="Худі Oversize" class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111] block cursor-zoom-in relative">
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all z-10 flex items-center justify-center">
+              <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition-opacity"></i>
+            </div>
+            <img src="assets/images/hoodie.jpg" alt="Худі Oversize" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 relative z-0">
+          </a>
           <div class="flex flex-col flex-grow justify-between">
             <div>
               <h3 class="text-sm md:text-base font-bold leading-tight mb-1">Худі Oversize</h3>
               <p class="text-xs text-[#666666]">2 190 ₴</p>
             </div>
-            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">
-              Додати в кошик
-            </button>
+            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">Додати в кошик</button>
           </div>
         </article>
 
         <!-- Товар 4 -->
         <article class="flex flex-col h-full border border-[#111111] p-3 md:p-4 bg-white hover:shadow-lg transition-all duration-300 group">
-          <div class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111]">
-            <img src="assets/images/sweatshirt.jpg" alt="Світшот Relaxed Fit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
+          <a href="assets/images/sweatshirt.jpg" data-fancybox="catalog" data-caption="Світшот Relaxed Fit" class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111] block cursor-zoom-in relative">
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all z-10 flex items-center justify-center">
+              <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition-opacity"></i>
+            </div>
+            <img src="assets/images/sweatshirt.jpg" alt="Світшот Relaxed Fit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 relative z-0">
+          </a>
           <div class="flex flex-col flex-grow justify-between">
             <div>
               <h3 class="text-sm md:text-base font-bold leading-tight mb-1">Світшот Relaxed Fit</h3>
               <p class="text-xs text-[#666666]">1 490 ₴</p>
             </div>
-            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">
-              Додати в кошик
-            </button>
+            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">Додати в кошик</button>
           </div>
         </article>
 
       </div>
-      <div class="mt-6 text-center sm:hidden">
-        <a href="#" class="text-xs font-bold uppercase tracking-widest border-b border-[#111111] pb-1">Усі товари →</a>
-      </div>
     </section>
 
     <!-- Лаба 10: Swiper.js Слайдер Відгуків -->
-    <section class="py-16 md:py-24 px-6 lg:px-12 border-b border-[#111111] bg-[#fafafa] overflow-hidden">
-      <div class="max-w-[1440px] mx-auto">
-        <header class="mb-10 text-center">
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Відгуки клієнтів</h2>
-          <p class="text-sm text-[#666666] mt-4">Що кажуть про наш базовий гардероб.</p>
+    <section class="py-16 md:py-24 px-6 lg:px-12 border-b border-[#111111] bg-white overflow-hidden">
+      <div class="max-w-[1440px] mx-auto relative">
+        
+        <!-- Лаба 10: Шапка слайдера з кастомними кнопками навігації -->
+        <header class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Відгуки клієнтів</h2>
+            <p class="text-sm text-[#666666] mt-4">Що кажуть про наш базовий гардероб.</p>
+          </div>
+          <div class="hidden md:flex items-center gap-2">
+            <button class="swiper-prev w-12 h-12 border border-[#111111] flex items-center justify-center hover:bg-[#111111] hover:text-white transition-colors cursor-pointer focus:outline-none">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="swiper-next w-12 h-12 border border-[#111111] flex items-center justify-center hover:bg-[#111111] hover:text-white transition-colors cursor-pointer focus:outline-none">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
         </header>
 
         <!-- Головний контейнер Swiper -->
         <div class="swiper reviews-swiper overflow-visible">
-          <div class="swiper-wrapper mb-12">
+          <div class="swiper-wrapper mb-4">
             
-            <!-- Слайд 1 -->
-            <div class="swiper-slide bg-white border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[8px_8px_0px_0px_#111111]">
+            <div class="swiper-slide bg-gray-50 border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[4px_4px_0px_0px_#111111]">
               <div class="flex text-[#111111] mb-4 text-xs">
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
               </div>
@@ -270,8 +286,7 @@
               </div>
             </div>
 
-            <!-- Слайд 2 -->
-            <div class="swiper-slide bg-white border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[8px_8px_0px_0px_#111111]">
+            <div class="swiper-slide bg-gray-50 border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[4px_4px_0px_0px_#111111]">
               <div class="flex text-[#111111] mb-4 text-xs">
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
               </div>
@@ -284,8 +299,7 @@
               </div>
             </div>
 
-            <!-- Слайд 3 -->
-            <div class="swiper-slide bg-white border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[8px_8px_0px_0px_#111111]">
+            <div class="swiper-slide bg-gray-50 border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[4px_4px_0px_0px_#111111]">
               <div class="flex text-[#111111] mb-4 text-xs">
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
               </div>
@@ -298,8 +312,7 @@
               </div>
             </div>
 
-            <!-- Слайд 4 -->
-            <div class="swiper-slide bg-white border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[8px_8px_0px_0px_#111111]">
+            <div class="swiper-slide bg-gray-50 border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[4px_4px_0px_0px_#111111]">
               <div class="flex text-[#111111] mb-4 text-xs">
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
               </div>
@@ -311,42 +324,15 @@
                 </div>
               </div>
             </div>
-            
           </div>
-          <!-- Навігація Swiper -->
-          <div class="swiper-pagination"></div>
+          <!-- Мобільна пагінація -->
+          <div class="swiper-pagination md:hidden !relative !mt-6"></div>
         </div>
       </div>
     </section>
 
-    <!-- Лаба 10: Fancybox v5 Галерея (Instagram стиль) -->
-    <section class="py-16 px-6 lg:px-12 border-b border-[#111111] bg-white">
-      <div class="max-w-[1440px] mx-auto">
-        <header class="mb-10 flex justify-between items-end">
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Instagram Gallery</h2>
-          <p class="text-[10px] font-bold uppercase tracking-widest hidden md:block">@vertex.ua</p>
-        </header>
-        <!-- CSS Grid для галереї -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <!-- Кожне зображення зв'язане атрибутом data-fancybox="gallery" -->
-          <a href="assets/images/tshirt.jpg" data-fancybox="gallery" data-caption="Базова біла футболка" class="block aspect-square overflow-hidden border border-[#111111] group cursor-zoom-in">
-            <img src="assets/images/tshirt.jpg" alt="Gallery 1" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500">
-          </a>
-          <a href="assets/images/jeans.jpg" data-fancybox="gallery" data-caption="Джинси Straight Fit" class="block aspect-square overflow-hidden border border-[#111111] group cursor-zoom-in">
-            <img src="assets/images/jeans.jpg" alt="Gallery 2" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500">
-          </a>
-          <a href="assets/images/hoodie.jpg" data-fancybox="gallery" data-caption="Чорне худі Oversize" class="block aspect-square overflow-hidden border border-[#111111] group cursor-zoom-in">
-            <img src="assets/images/hoodie.jpg" alt="Gallery 3" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500">
-          </a>
-          <a href="assets/images/sweatshirt.jpg" data-fancybox="gallery" data-caption="Світшот Relaxed Fit" class="block aspect-square overflow-hidden border border-[#111111] group cursor-zoom-in">
-            <img src="assets/images/sweatshirt.jpg" alt="Gallery 4" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500">
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Секція: Відео та Карта (Лаба 7: Ембеддинг) -->
-    <section id="about" class="py-16 md:py-24 px-6 lg:px-12 border-b border-[#111111] bg-white">
+    <!-- Секція: Відео та Карта (Лаба 7) -->
+    <section id="about" class="py-16 md:py-24 px-6 lg:px-12 border-b border-[#111111] bg-gray-50">
       <div class="max-w-[1440px] mx-auto">
         <header class="mb-10 text-center md:text-left">
           <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Наше виробництво</h2>
@@ -355,7 +341,6 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           
-          <!-- Ембеддинг 1: YouTube Відео -->
           <div class="w-full flex flex-col">
             <p class="text-[10px] font-bold uppercase tracking-widest text-[#111111] mb-3">Процес створення</p>
             <div class="w-full aspect-video border border-[#111111] overflow-hidden group">
@@ -370,10 +355,9 @@
             </div>
           </div>
 
-          <!-- Ембеддинг 2: Інтерактивна Карта Google Maps -->
           <div class="w-full flex flex-col">
             <p class="text-[10px] font-bold uppercase tracking-widest text-[#111111] mb-3">Наш шоурум (Львів)</p>
-            <div class="w-full aspect-video lg:h-full border border-[#111111] p-1 bg-gray-50">
+            <div class="w-full aspect-video lg:h-full border border-[#111111] p-1 bg-white">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2573.076540122793!2d24.02971701570776!3d49.84195207939615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add6c2e097db9%3A0x7770bc1ea21b2505!2sLviv%20Polytechnic%20National%20University!5e0!3m2!1sen!2sua!4v1680000000000!5m2!1sen!2sua" 
                 title="VERTEX.UA Шоурум"
@@ -391,13 +375,12 @@
     </section>
 
     <!-- Секція "Розумний підбір" -->
-    <section id="calculator" class="py-20 md:py-32 px-6 flex flex-col items-center border-b border-[#111111] bg-[#fafafa]">
+    <section id="calculator" class="py-20 md:py-32 px-6 flex flex-col items-center border-b border-[#111111] bg-white">
       <p class="text-[10px] font-bold uppercase tracking-widest text-[#666666] mb-4">Smart Sizing</p>
       <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 max-w-xl leading-tight">Не вгадуйте розмір — знайдіть свій за 30 секунд</h2>
       
-      <div class="w-full max-w-xl bg-white border-2 border-[#111111] p-6 md:p-10 shadow-[8px_8px_0px_0px_#111111] md:shadow-[12px_12px_0px_0px_#111111]">
+      <div class="w-full max-w-xl bg-gray-50 border-2 border-[#111111] p-6 md:p-10 shadow-[8px_8px_0px_0px_#111111] md:shadow-[12px_12px_0px_0px_#111111]">
         <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          
           <div class="flex flex-col">
             <label class="text-[10px] font-bold uppercase tracking-widest mb-2">Зріст</label>
             <div class="relative">
@@ -405,7 +388,6 @@
               <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">см</span>
             </div>
           </div>
-          
           <div class="flex flex-col">
             <label class="text-[10px] font-bold uppercase tracking-widest mb-2">Вага</label>
             <div class="relative">
@@ -413,7 +395,6 @@
               <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">кг</span>
             </div>
           </div>
-
           <div class="flex flex-col">
             <label class="text-[10px] font-bold uppercase tracking-widest mb-2">Обхват грудей</label>
             <div class="relative">
@@ -421,7 +402,6 @@
               <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">см</span>
             </div>
           </div>
-
           <div class="flex flex-col">
             <label class="text-[10px] font-bold uppercase tracking-widest mb-2">Обхват талії</label>
             <div class="relative">
@@ -429,7 +409,6 @@
               <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">см</span>
             </div>
           </div>
-
           <button type="button" class="md:col-span-2 bg-[#111111] text-white py-4 mt-2 text-xs font-bold uppercase tracking-widest hover:opacity-80 transition-opacity">
             Розрахувати розмір
           </button>
@@ -438,7 +417,7 @@
     </section>
 
     <!-- Лаба 9: Форма зворотного зв'язку -->
-    <section id="feedback" class="py-16 md:py-24 px-6 lg:px-12 bg-gray-50 border-b border-[#111111]">
+    <section id="feedback" class="py-16 md:py-24 px-6 lg:px-12 bg-white border-b border-[#111111]">
       <div class="max-w-[600px] mx-auto">
         <header class="mb-10 text-center">
           <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Залишилися питання?</h2>
@@ -446,15 +425,12 @@
         </header>
 
         <form id="feedbackForm" class="space-y-6" novalidate>
-          
-          <!-- Поле Ім'я -->
           <div>
             <label for="username" class="block text-xs font-bold uppercase tracking-widest text-[#111111] mb-2">Ваше ім'я *</label>
             <input type="text" id="username" name="username" class="w-full border border-[#111111] p-4 text-sm focus:outline-none focus:ring-1 focus:ring-black transition-all" aria-describedby="usernameError">
             <p id="usernameError" class="text-red-500 text-xs mt-1 hidden">Ім'я повинно містити щонайменше 2 символи.</p>
           </div>
 
-          <!-- Поля Телефон та Email у 2 колонки на ПК -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label for="phone" class="block text-xs font-bold uppercase tracking-widest text-[#111111] mb-2">Телефон *</label>
@@ -468,14 +444,12 @@
             </div>
           </div>
 
-          <!-- Поле Повідомлення -->
           <div>
             <label for="message" class="block text-xs font-bold uppercase tracking-widest text-[#111111] mb-2">Повідомлення *</label>
             <textarea id="message" name="message" rows="4" class="w-full border border-[#111111] p-4 text-sm focus:outline-none focus:ring-1 focus:ring-black transition-all resize-y" aria-describedby="messageError"></textarea>
             <p id="messageError" class="text-red-500 text-xs mt-1 hidden">Повідомлення занадто коротке (мінімум 10 символів).</p>
           </div>
 
-          <!-- Згода -->
           <div class="flex items-start">
             <div class="flex items-center h-5">
               <input id="agreement" name="agreement" type="checkbox" class="w-4 h-4 border border-[#111111] rounded-none focus:ring-black text-black">
@@ -486,7 +460,6 @@
             </div>
           </div>
 
-          <!-- Кнопка -->
           <button type="submit" class="w-full bg-[#111111] text-white font-bold uppercase tracking-widest text-xs py-4 px-8 hover:bg-[#333333] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
             Надіслати
           </button>
@@ -507,15 +480,11 @@
 
   <!-- Підвал (Footer) -->
   <footer id="contacts" class="bg-white border-t border-[#111111] pt-16 w-full">
-    
     <div class="px-6 lg:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 mb-12">
-      <!-- Опис -->
       <div class="lg:pr-10">
         <p class="font-bold text-base mb-4 text-[#111111]">VERTEX.UA</p>
         <p class="text-sm text-[#666666] leading-relaxed">Базовий одяг зручного крою. Пошито в Україні.</p>
       </div>
-
-      <!-- Магазин -->
       <div>
         <p class="text-[11px] font-bold uppercase tracking-widest mb-6 text-[#111111]">Магазин</p>
         <ul class="grid gap-4 text-sm text-[#666666]">
@@ -524,8 +493,6 @@
           <li><a href="#" class="hover:text-[#111111] transition-colors">Розмірна сітка</a></li>
         </ul>
       </div>
-
-      <!-- Бренд -->
       <div>
         <p class="text-[11px] font-bold uppercase tracking-widest mb-6 text-[#111111]">Бренд</p>
         <ul class="grid gap-4 text-sm text-[#666666]">
@@ -534,8 +501,6 @@
           <li><a href="#" class="hover:text-[#111111] transition-colors">Матеріали</a></li>
         </ul>
       </div>
-
-      <!-- Допомога -->
       <div>
         <p class="text-[11px] font-bold uppercase tracking-widest mb-6 text-[#111111]">Допомога</p>
         <ul class="grid gap-4 text-sm text-[#666666]">
@@ -545,13 +510,9 @@
         </ul>
       </div>
     </div>
-
-    <!-- Картинка-логотип -->
     <div class="w-full">
       <img src="assets/images/logo.svg" alt="VERTEX.UA" class="block w-full h-auto">
     </div>
-
-    <!-- Копірайт -->
     <div class="border-t-[3px] border-[#111111] px-6 lg:px-12 py-6">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-[#111111] font-bold uppercase tracking-[0.15em]">
         <p>© 2026 VERTEX.UA</p>
@@ -560,7 +521,7 @@
     </div>
   </footer>
 
-  <!-- Скрипт валідації (Лаба 9) -->
+  <!-- Скрипт валідації форми (Лаба 9) -->
   <script src="assets/validation.js"></script>
 
   <!-- Лаба 10: Скрипти бібліотек через CDN -->
@@ -572,7 +533,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       
-      // 1. Ініціалізація Typed.js (Ефект друку в шапці)
+      // 1. Ініціалізація Typed.js (Друкований текст)
       if (document.querySelector('#typed-text')) {
         const typed = new Typed('#typed-text', {
           strings: ['Створено для міста.', 'На кожен день.', 'Твій ідеальний розмір.'],
@@ -588,34 +549,37 @@
       // 2. Ініціалізація Swiper.js (Слайдер відгуків)
       if (document.querySelector('.reviews-swiper')) {
         const swiper = new Swiper('.reviews-swiper', {
-          loop: true, // нескінченна прокрутка
-          spaceBetween: 24, // відступ між слайдами
+          loop: true,
+          spaceBetween: 24,
           autoplay: {
-            delay: 3000,
+            delay: 3500,
             disableOnInteraction: false,
-            pauseOnMouseEnter: true, // зупинка при наведенні
+            pauseOnMouseEnter: true, 
+          },
+          navigation: {
+            nextEl: '.swiper-next', // Підключення кастомних кнопок
+            prevEl: '.swiper-prev',
           },
           pagination: {
             el: '.swiper-pagination',
             clickable: true,
           },
-          // Адаптивність (Breakpoints)
           breakpoints: {
-            320: { slidesPerView: 1 }, // Мобільні: 1 слайд
-            768: { slidesPerView: 2 }, // Планшети: 2 слайда
-            1024: { slidesPerView: 3 } // ПК: 3 слайда
+            320: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
           }
         });
       }
 
-      // 3. Ініціалізація Fancybox v5
-      Fancybox.bind("[data-fancybox='gallery']", {
+      // 3. Ініціалізація Fancybox v5 (Зум фотографій в Каталозі)
+      Fancybox.bind("[data-fancybox='catalog']", {
         Carousel: {
-          Transition: "fade", // Ефект переходу (згасання)
+          Transition: "fade", 
         },
         Images: {
           Panzoom: {
-            maxScale: 3, // Максимальний зум
+            maxScale: 2, 
           },
         },
       });
