@@ -14,6 +14,10 @@
     }
   </script>
   
+  <!-- Лаба 10: CSS для Swiper.js та Fancybox -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -106,8 +110,10 @@
       <div class="absolute inset-0 -z-10 bg-gradient-to-r from-[#111111] via-[#111111]/80 to-transparent"></div>
       
       <div class="max-w-[650px] z-20">
+        <!-- Лаба 10: Додано span для ефекту друку Typed.js -->
         <h1 class="text-white text-[2.5rem] md:text-[3.5rem] leading-[1.1] font-bold mb-6 tracking-tight">
-          Базовий одяг<br>зручного крою, що<br>сідає бездоганно.
+          Базовий одяг<br>зручного крою, що<br>сідає бездоганно.<br>
+          <span id="typed-text" class="text-[#cccccc] text-2xl md:text-3xl mt-2 block h-10"></span>
         </h1>
         <p class="text-[#cccccc] text-[1rem] md:text-[1.1rem] leading-relaxed mb-10 max-w-[500px]">
           Капсульний міський гардероб зі щільної бавовни. Розумний алгоритм розраховує ваш точний розмір за 30 секунд.
@@ -235,6 +241,107 @@
       </div>
       <div class="mt-6 text-center sm:hidden">
         <a href="#" class="text-xs font-bold uppercase tracking-widest border-b border-[#111111] pb-1">Усі товари →</a>
+      </div>
+    </section>
+
+    <!-- Лаба 10: Swiper.js Слайдер Відгуків -->
+    <section class="py-16 md:py-24 px-6 lg:px-12 border-b border-[#111111] bg-[#fafafa] overflow-hidden">
+      <div class="max-w-[1440px] mx-auto">
+        <header class="mb-10 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Відгуки клієнтів</h2>
+          <p class="text-sm text-[#666666] mt-4">Що кажуть про наш базовий гардероб.</p>
+        </header>
+
+        <!-- Головний контейнер Swiper -->
+        <div class="swiper reviews-swiper overflow-visible">
+          <div class="swiper-wrapper mb-12">
+            
+            <!-- Слайд 1 -->
+            <div class="swiper-slide bg-white border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[8px_8px_0px_0px_#111111]">
+              <div class="flex text-[#111111] mb-4 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-sm italic mb-6 flex-grow">"Футболка Heavyweight просто ідеальна. Вона не втрачає форму після 10 праннів, як це буває з мас-маркетом."</p>
+              <div class="flex items-center gap-4 border-t border-[#111111] pt-4">
+                <div>
+                  <h4 class="font-bold text-xs uppercase tracking-widest">Максим К.</h4>
+                  <p class="text-[10px] text-[#666666]">Київ, Україна</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Слайд 2 -->
+            <div class="swiper-slide bg-white border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[8px_8px_0px_0px_#111111]">
+              <div class="flex text-[#111111] mb-4 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-sm italic mb-6 flex-grow">"Джинси сіли ідеально з першого разу завдяки вашому калькулятору розмірів. Дуже задоволений покупкою."</p>
+              <div class="flex items-center gap-4 border-t border-[#111111] pt-4">
+                <div>
+                  <h4 class="font-bold text-xs uppercase tracking-widest">Олександр П.</h4>
+                  <p class="text-[10px] text-[#666666]">Львів, Україна</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Слайд 3 -->
+            <div class="swiper-slide bg-white border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[8px_8px_0px_0px_#111111]">
+              <div class="flex text-[#111111] mb-4 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-sm italic mb-6 flex-grow">"Худі дуже тепле і приємне до тіла. Мінімалізм і жодних зайвих логотипів — те, що я шукав."</p>
+              <div class="flex items-center gap-4 border-t border-[#111111] pt-4">
+                <div>
+                  <h4 class="font-bold text-xs uppercase tracking-widest">Денис В.</h4>
+                  <p class="text-[10px] text-[#666666]">Одеса, Україна</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Слайд 4 -->
+            <div class="swiper-slide bg-white border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[8px_8px_0px_0px_#111111]">
+              <div class="flex text-[#111111] mb-4 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-sm italic mb-6 flex-grow">"Відмінний сервіс і швидка доставка. Якість тканини перевершила мої очікування. Однозначно замовлятиму ще."</p>
+              <div class="flex items-center gap-4 border-t border-[#111111] pt-4">
+                <div>
+                  <h4 class="font-bold text-xs uppercase tracking-widest">Андрій М.</h4>
+                  <p class="text-[10px] text-[#666666]">Дніпро, Україна</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Навігація Swiper -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Лаба 10: Fancybox v5 Галерея (Instagram стиль) -->
+    <section class="py-16 px-6 lg:px-12 border-b border-[#111111] bg-white">
+      <div class="max-w-[1440px] mx-auto">
+        <header class="mb-10 flex justify-between items-end">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Instagram Gallery</h2>
+          <p class="text-[10px] font-bold uppercase tracking-widest hidden md:block">@vertex.ua</p>
+        </header>
+        <!-- CSS Grid для галереї -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <!-- Кожне зображення зв'язане атрибутом data-fancybox="gallery" -->
+          <a href="assets/images/tshirt.jpg" data-fancybox="gallery" data-caption="Базова біла футболка" class="block aspect-square overflow-hidden border border-[#111111] group cursor-zoom-in">
+            <img src="assets/images/tshirt.jpg" alt="Gallery 1" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500">
+          </a>
+          <a href="assets/images/jeans.jpg" data-fancybox="gallery" data-caption="Джинси Straight Fit" class="block aspect-square overflow-hidden border border-[#111111] group cursor-zoom-in">
+            <img src="assets/images/jeans.jpg" alt="Gallery 2" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500">
+          </a>
+          <a href="assets/images/hoodie.jpg" data-fancybox="gallery" data-caption="Чорне худі Oversize" class="block aspect-square overflow-hidden border border-[#111111] group cursor-zoom-in">
+            <img src="assets/images/hoodie.jpg" alt="Gallery 3" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500">
+          </a>
+          <a href="assets/images/sweatshirt.jpg" data-fancybox="gallery" data-caption="Світшот Relaxed Fit" class="block aspect-square overflow-hidden border border-[#111111] group cursor-zoom-in">
+            <img src="assets/images/sweatshirt.jpg" alt="Gallery 4" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500">
+          </a>
+        </div>
       </div>
     </section>
 
@@ -453,8 +560,68 @@
     </div>
   </footer>
 
-  <!-- Скрипт валідації -->
+  <!-- Скрипт валідації (Лаба 9) -->
   <script src="assets/validation.js"></script>
+
+  <!-- Лаба 10: Скрипти бібліотек через CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script> 
+
+  <!-- Лаба 10: Ініціалізація плагінів (Конфігурація) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      // 1. Ініціалізація Typed.js (Ефект друку в шапці)
+      if (document.querySelector('#typed-text')) {
+        const typed = new Typed('#typed-text', {
+          strings: ['Створено для міста.', 'На кожен день.', 'Твій ідеальний розмір.'],
+          typeSpeed: 60,
+          backSpeed: 40,
+          backDelay: 2000,
+          loop: true,
+          showCursor: true,
+          cursorChar: '|'
+        });
+      }
+
+      // 2. Ініціалізація Swiper.js (Слайдер відгуків)
+      if (document.querySelector('.reviews-swiper')) {
+        const swiper = new Swiper('.reviews-swiper', {
+          loop: true, // нескінченна прокрутка
+          spaceBetween: 24, // відступ між слайдами
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true, // зупинка при наведенні
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          // Адаптивність (Breakpoints)
+          breakpoints: {
+            320: { slidesPerView: 1 }, // Мобільні: 1 слайд
+            768: { slidesPerView: 2 }, // Планшети: 2 слайда
+            1024: { slidesPerView: 3 } // ПК: 3 слайда
+          }
+        });
+      }
+
+      // 3. Ініціалізація Fancybox v5
+      Fancybox.bind("[data-fancybox='gallery']", {
+        Carousel: {
+          Transition: "fade", // Ефект переходу (згасання)
+        },
+        Images: {
+          Panzoom: {
+            maxScale: 3, // Максимальний зум
+          },
+        },
+      });
+
+    });
+  </script>
 
 </body>
 </html>
