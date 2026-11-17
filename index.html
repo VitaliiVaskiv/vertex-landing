@@ -374,44 +374,160 @@
       </div>
     </section>
 
-    <!-- Секція "Розумний підбір" -->
+  <!-- Лаба 11: Інтерактивний віджет "Розумний підбір розміру" -->
     <section id="calculator" class="py-20 md:py-32 px-6 flex flex-col items-center border-b border-[#111111] bg-white">
-      <p class="text-[10px] font-bold uppercase tracking-widest text-[#666666] mb-4">Smart Sizing</p>
-      <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 max-w-xl leading-tight">Не вгадуйте розмір — знайдіть свій за 30 секунд</h2>
+      <p class="text-[10px] font-bold uppercase tracking-widest text-[#666666] mb-4">Smart Sizing Engine</p>
+      <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 max-w-2xl leading-tight">Розрахуйте ідеальний розмір та точні заміри лекал за 30 секунд</h2>
       
-      <div class="w-full max-w-xl bg-gray-50 border-2 border-[#111111] p-6 md:p-10 shadow-[8px_8px_0px_0px_#111111] md:shadow-[12px_12px_0px_0px_#111111]">
-        <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="w-full max-w-2xl bg-gray-50 border-2 border-[#111111] p-6 md:p-10 shadow-[8px_8px_0px_0px_#111111] md:shadow-[12px_12px_0px_0px_#111111]">
+        <form id="sizeWidgetForm" class="space-y-6" novalidate>
+          
+          <!-- 1–2. Стать та категорія виробу -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <!-- Стать (radio-кнопки) -->
+            <div class="flex flex-col">
+              <span class="text-[10px] font-bold uppercase tracking-widest mb-2">1. Стать</span>
+              <div class="grid grid-cols-2 gap-2 h-full">
+                <label class="cursor-pointer">
+                  <input type="radio" name="calc-gender" value="male" checked class="peer sr-only">
+                  <div class="h-full min-h-[46px] flex items-center justify-center border border-[#111111] bg-white px-3 text-xs font-bold uppercase tracking-wider peer-checked:bg-[#111111] peer-checked:text-white transition-colors">
+                    Чоловіча
+                  </div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="calc-gender" value="female" class="peer sr-only">
+                  <div class="h-full min-h-[46px] flex items-center justify-center border border-[#111111] bg-white px-3 text-xs font-bold uppercase tracking-wider peer-checked:bg-[#111111] peer-checked:text-white transition-colors">
+                    Жіноча
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Категорія товару (select) -->
+            <div class="flex flex-col">
+              <label for="calc-category" class="text-[10px] font-bold uppercase tracking-widest mb-2">2. Категорія виробу</label>
+              <select id="calc-category" class="w-full min-h-[46px] bg-white border border-[#111111] px-3.5 py-3 text-sm font-medium focus:outline-none focus:ring-1 focus:ring-[#111111] cursor-pointer">
+                <option value="tshirt">Футболка (щільна бавовна)</option>
+                <option value="hoodie">Худі (базовий фліс)</option>
+                <option value="sweatshirt">Світшот (тринитка без начосу)</option>
+                <option value="jeans">Джинси / Штани (денім)</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- 3–5. Антропометричні параметри -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            
+            <!-- Зріст -->
+            <div class="flex flex-col">
+              <label for="calc-height" class="text-[10px] font-bold uppercase tracking-widest mb-2">Зріст (140–225) *</label>
+              <div class="relative">
+                <input type="number" id="calc-height" min="140" max="225" step="1" value="180" required
+                       class="w-full bg-white border border-[#111111] p-3 pr-10 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111] transition-colors"
+                       aria-describedby="error-height">
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">см</span>
+              </div>
+              <p id="error-height" class="text-red-500 text-[11px] font-medium mt-1 hidden">Від 140 до 225 см</p>
+            </div>
+
+            <!-- Вага -->
+            <div class="flex flex-col">
+              <label for="calc-weight" class="text-[10px] font-bold uppercase tracking-widest mb-2">Вага (40–160) *</label>
+              <div class="relative">
+                <input type="number" id="calc-weight" min="40" max="160" step="1" value="75" required
+                       class="w-full bg-white border border-[#111111] p-3 pr-10 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111] transition-colors"
+                       aria-describedby="error-weight">
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">кг</span>
+              </div>
+              <p id="error-weight" class="text-red-500 text-[11px] font-medium mt-1 hidden">Від 40 до 160 кг</p>
+            </div>
+
+            <!-- Обхват грудей або талії (динамічно змінюється) -->
+            <div class="flex flex-col">
+              <label id="label-girth" for="calc-girth" class="text-[10px] font-bold uppercase tracking-widest mb-2">Груди (70–145) *</label>
+              <div class="relative">
+                <input type="number" id="calc-girth" min="70" max="145" step="1" value="98" required
+                       class="w-full bg-white border border-[#111111] p-3 pr-10 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111] transition-colors"
+                       aria-describedby="error-girth">
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">см</span>
+              </div>
+              <p id="error-girth" class="text-red-500 text-[11px] font-medium mt-1 hidden">Від 70 до 145 см</p>
+            </div>
+
+          </div>
+
+          <!-- 6. Бажана посадка по фігурі (radio-кнопки) -->
           <div class="flex flex-col">
-            <label class="text-[10px] font-bold uppercase tracking-widest mb-2">Зріст</label>
-            <div class="relative">
-              <input type="number" placeholder="180" class="w-full border border-[#111111] p-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111]">
-              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">см</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest mb-2">3. Бажана посадка</span>
+            <div class="grid grid-cols-3 gap-3">
+              <label class="cursor-pointer">
+                <input type="radio" name="calc-fit" value="slim" class="peer sr-only">
+                <div class="border border-[#111111] bg-white p-3 text-center peer-checked:bg-[#111111] peer-checked:text-white transition-colors">
+                  <span class="block text-xs font-bold uppercase tracking-wider">Slim</span>
+                  <span class="block text-[10px] opacity-70 mt-0.5">по фігурі</span>
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="calc-fit" value="regular" checked class="peer sr-only">
+                <div class="border border-[#111111] bg-white p-3 text-center peer-checked:bg-[#111111] peer-checked:text-white transition-colors">
+                  <span class="block text-xs font-bold uppercase tracking-wider">Regular</span>
+                  <span class="block text-[10px] opacity-70 mt-0.5">класична</span>
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="calc-fit" value="oversize" class="peer sr-only">
+                <div class="border border-[#111111] bg-white p-3 text-center peer-checked:bg-[#111111] peer-checked:text-white transition-colors">
+                  <span class="block text-xs font-bold uppercase tracking-wider">Oversize</span>
+                  <span class="block text-[10px] opacity-70 mt-0.5">вільна</span>
+                </div>
+              </label>
             </div>
           </div>
-          <div class="flex flex-col">
-            <label class="text-[10px] font-bold uppercase tracking-widest mb-2">Вага</label>
-            <div class="relative">
-              <input type="number" placeholder="75" class="w-full border border-[#111111] p-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111]">
-              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">кг</span>
-            </div>
+
+          <!-- 7. Особливість фігури (checkbox) -->
+          <div>
+            <label for="calc-anatomy" class="flex items-center gap-3 bg-white border border-[#111111] p-3.5 cursor-pointer select-none">
+              <input type="checkbox" id="calc-anatomy" class="w-4 h-4 accent-[#111111] cursor-pointer">
+              <span id="label-anatomy" class="text-xs font-medium text-[#111111]">Широкі плечі / атлетична статура (додати запас у плечах)</span>
+            </label>
           </div>
-          <div class="flex flex-col">
-            <label class="text-[10px] font-bold uppercase tracking-widest mb-2">Обхват грудей</label>
-            <div class="relative">
-              <input type="number" placeholder="98" class="w-full border border-[#111111] p-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111]">
-              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">см</span>
+
+          <!-- Блок живого результату -->
+          <div id="calc-result-box" class="bg-[#111111] text-white p-6 md:p-8 transition-colors">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#333333]">
+              <div>
+                <p id="result-status" class="text-[10px] font-bold uppercase tracking-widest text-[#999999] mb-1">Рекомендований розмір (Чоловічий)</p>
+                <p id="result-size" class="text-3xl md:text-4xl font-extrabold tracking-tight">L</p>
+              </div>
+              <button type="button" id="calc-reset" class="self-start sm:self-center border border-[#444444] text-[#cccccc] hover:border-white hover:text-white px-4 py-2 text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer">
+                Скинути параметри
+              </button>
             </div>
-          </div>
-          <div class="flex flex-col">
-            <label class="text-[10px] font-bold uppercase tracking-widest mb-2">Обхват талії</label>
-            <div class="relative">
-              <input type="number" placeholder="82" class="w-full border border-[#111111] p-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111]">
-              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">см</span>
+
+            <!-- Сітка точних замірів виробу -->
+            <div class="grid grid-cols-3 gap-4 py-5 border-b border-[#333333] text-center sm:text-left">
+              <div>
+                <p id="metric-1-label" class="text-[10px] uppercase tracking-widest text-[#999999]">Ширина грудей</p>
+                <p id="metric-1-val" class="text-lg md:text-xl font-bold mt-1">58 см</p>
+              </div>
+              <div>
+                <p id="metric-2-label" class="text-[10px] uppercase tracking-widest text-[#999999]">Довжина спини</p>
+                <p id="metric-2-val" class="text-lg md:text-xl font-bold mt-1">72 см</p>
+              </div>
+              <div>
+                <p id="metric-3-label" class="text-[10px] uppercase tracking-widest text-[#999999]">Довжина рукава</p>
+                <p id="metric-3-val" class="text-lg md:text-xl font-bold mt-1">23 см</p>
+              </div>
             </div>
+
+            <!-- Текстова рекомендація -->
+            <p id="result-advice" class="text-xs text-[#cccccc] mt-4 leading-relaxed">
+              Оптимальний баланс по плечах та довжині для чоловічої футболки (180 см / 75 кг, посадка REGULAR).
+            </p>
           </div>
-          <button type="button" class="md:col-span-2 bg-[#111111] text-white py-4 mt-2 text-xs font-bold uppercase tracking-widest hover:opacity-80 transition-opacity">
-            Розрахувати розмір
-          </button>
+
         </form>
       </div>
     </section>
@@ -586,6 +702,8 @@
 
     });
   </script>
+
+<script src="assets/widget.js"></script>
 
 </body>
 </html>
