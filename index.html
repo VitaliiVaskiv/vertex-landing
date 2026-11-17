@@ -3,25 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VERTEX.UA — базовий одяг</title>
+  <title>VERTEX.UA — базовий одяг українського виробництва</title>
+  <meta name="description" content="VERTEX.UA — капсульний базовий одяг зі щільної бавовни, пошитий в Україні. Розумний онлайн-підбір розміру за 30 секунд. Футболки, худі, світшоти та джинси.">
+  <link rel="canonical" href="https://vertex-ua.vercel.app/">
+
+  <!-- Вбудований SVG Favicon (без зайвих мережевих запитів та 404) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111111'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='bold' font-size='18'%3EV%3C/text%3E%3C/svg%3E">
+
+  <!-- Preconnect для прискорення завантаження зовнішніх ресурсів -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Попереднє завантаження головного банера (Оптимізація LCP) -->
+  <link rel="preload" as="image" href="assets/images/hero_bg_web.webp" fetchpriority="high">
 
   <!-- Підключення Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
   <script>
     tailwind.config = {
       safelist: ['border-red-500', 'border-green-500']
     }
   </script>
   
-  <!-- Лаба 10: CSS для Swiper.js та Fancybox -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+  <!-- Неблокуюче (асинхронне) підключення CSS бібліотек та шрифтів -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  </noscript>
 </head>
 <body class="bg-white text-[#111111] font-['Inter',sans-serif] antialiased">
 
@@ -35,12 +52,12 @@
     <div class="flex items-center justify-between px-6 py-4 lg:px-12 w-full">
       
       <!-- Логотип -->
-      <a href="/" class="flex-shrink-0">
-        <img src="assets/images/logo.svg" alt="VERTEX.UA" class="h-6 md:h-8 w-auto">
+      <a href="/" class="flex-shrink-0" aria-label="VERTEX.UA — на головну">
+        <img src="assets/images/logo.svg" alt="VERTEX.UA" width="140" height="32" class="h-6 md:h-8 w-auto">
       </a>
 
       <!-- Навігація (Десктоп) -->
-      <nav class="hidden md:flex items-center gap-8">
+      <nav class="hidden md:flex items-center gap-8" aria-label="Головна навігація">
         <a href="#catalog" class="text-[0.75rem] font-bold uppercase hover:opacity-60 transition-opacity">Каталог</a>
         <a href="#calculator" class="text-[0.75rem] font-bold uppercase hover:opacity-60 transition-opacity">Розумний підбір</a>
         <a href="#features" class="text-[0.75rem] font-bold uppercase hover:opacity-60 transition-opacity">Про бренд</a>
@@ -52,24 +69,23 @@
         
         <!-- Адаптивний рядок пошуку (тільки на ПК) -->
         <div class="hidden md:block relative">
-          <input type="text" placeholder="ПОШУК..." class="border border-[#111111] bg-transparent py-1.5 pl-3 pr-8 text-[0.7rem] font-bold uppercase placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-[#111111] w-32 lg:w-48 transition-all">
-          <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 text-[#111111] hover:opacity-60">
-            <i class="fa-solid fa-magnifying-glass text-xs"></i>
+          <input type="text" aria-label="Пошук по каталогу" placeholder="ПОШУК..." class="border border-[#111111] bg-transparent py-1.5 pl-3 pr-8 text-[0.7rem] font-bold uppercase placeholder-[#525252] focus:outline-none focus:ring-1 focus:ring-[#111111] w-32 lg:w-48 transition-all">
+          <button type="button" aria-label="Виконати пошук" class="absolute right-2 top-1/2 -translate-y-1/2 text-[#111111] hover:opacity-60">
+            <i class="fa-solid fa-magnifying-glass text-xs" aria-hidden="true"></i>
           </button>
         </div>
 
         <!-- Іконка кошика з динамічним індикатором (Badge) -->
-        <a href="#catalog" class="relative text-[#111111] hover:opacity-60 transition-opacity flex items-center">
-          <i class="fa-solid fa-bag-shopping text-xl"></i>
-          <!-- Індикатор кількості (Badge) -->
+        <a href="#catalog" aria-label="Кошик (2 товари)" class="relative text-[#111111] hover:opacity-60 transition-opacity flex items-center">
+          <i class="fa-solid fa-bag-shopping text-xl" aria-hidden="true"></i>
           <span class="absolute -top-1.5 -right-2 bg-[#111111] text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full border border-white">
             2
           </span>
         </a>
         
         <!-- Кнопка Бургер (тільки на мобільному) -->
-        <button id="mobile-menu-btn" class="md:hidden text-2xl text-[#111111] focus:outline-none ml-1">
-          <i class="fa-solid fa-bars"></i>
+        <button id="mobile-menu-btn" type="button" aria-label="Відкрити меню навігації" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-2xl text-[#111111] focus:outline-none ml-1">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
         </button>
       </div>
     </div>
@@ -79,9 +95,9 @@
       
       <!-- Рядок пошуку -->
       <div class="relative w-full mb-2">
-        <input type="text" placeholder="ПОШУК ТОВАРІВ..." class="w-full border border-[#111111] bg-transparent py-3 pl-4 pr-10 text-xs font-bold uppercase placeholder-[#666666] focus:outline-none">
-        <button type="submit" class="absolute right-4 top-1/2 -translate-y-1/2 text-[#111111]">
-          <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" aria-label="Пошук товарів" placeholder="ПОШУК ТОВАРІВ..." class="w-full border border-[#111111] bg-transparent py-3 pl-4 pr-10 text-xs font-bold uppercase placeholder-[#525252] focus:outline-none">
+        <button type="button" aria-label="Знайти товари" class="absolute right-4 top-1/2 -translate-y-1/2 text-[#111111]">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
         </button>
       </div>
 
@@ -97,33 +113,40 @@
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
     btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+      const isHidden = menu.classList.toggle('hidden');
       menu.classList.toggle('flex');
+      btn.setAttribute('aria-expanded', String(!isHidden));
     });
   </script>
 
   <main>
     
-    <!-- Hero Секція -->
-    <section class="relative flex items-center min-h-[80vh] py-20 px-6 lg:px-20 z-10 overflow-hidden border-b border-[#111111]">
-      <div class="absolute inset-0 -z-20 bg-[url('assets/images/hero_bg_web.jpg')] bg-cover bg-[center_right] bg-no-repeat"></div>
-      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-[#111111] via-[#111111]/80 to-transparent"></div>
+    <!-- Hero Секція (Оптимізовано LCP через тег img + fetchpriority="high") -->
+    <section class="relative flex items-center min-h-[80vh] py-20 px-6 lg:px-20 z-10 overflow-hidden border-b border-[#111111] bg-[#111111]">
+      <img src="assets/images/hero_bg_web.webp"
+           alt="Колекція базового одягу VERTEX.UA"
+           width="1400"
+           height="900"
+           fetchpriority="high"
+           decoding="async"
+           class="absolute inset-0 -z-20 w-full h-full object-cover object-[center_right]">
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-[#111111] via-[#111111]/85 to-[#111111]/30"></div>
       
       <div class="max-w-[650px] z-20">
         <h1 class="text-white text-[2.5rem] md:text-[3.5rem] leading-[1.1] font-bold mb-4 tracking-tight">
           Базовий одяг<br>зручного крою, що<br>сідає бездоганно.
         </h1>
         
-        <!-- Лаба 10: Фіксований контейнер для ефекту друку, щоб нічого не стрибало -->
+        <!-- Фіксований контейнер для ефекту друку (нульовий CLS) -->
         <div class="h-8 md:h-10 mb-8 flex items-center">
           <span id="typed-text" class="bg-white text-[#111111] px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] inline-block shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)]"></span>
         </div>
 
-        <p class="text-[#cccccc] text-[1rem] md:text-[1.1rem] leading-relaxed mb-10 max-w-[500px]">
+        <p class="text-[#e5e5e5] text-[1rem] md:text-[1.1rem] leading-relaxed mb-10 max-w-[500px]">
           Капсульний міський гардероб зі щільної бавовни. Розумний алгоритм розраховує ваш точний розмір за 30 секунд.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 w-full">
-          <a href="#calculator" class="inline-flex items-center justify-center border-2 border-transparent bg-[#2a2a2a] text-white px-8 py-4 text-[0.75rem] font-bold uppercase hover:bg-white hover:text-[#111111] hover:border-[#111111] transition-all duration-300 w-full sm:w-auto">
+          <a href="#calculator" class="inline-flex items-center justify-center border-2 border-white bg-[#2a2a2a] text-white px-8 py-4 text-[0.75rem] font-bold uppercase hover:bg-white hover:text-[#111111] transition-all duration-300 w-full sm:w-auto">
             Підібрати розмір
           </a>
           <a href="#catalog" class="inline-flex items-center justify-center bg-white text-[#111111] px-8 py-4 text-[0.75rem] font-bold uppercase hover:bg-[#e0e0e0] transition-colors duration-300 w-full sm:w-auto">
@@ -137,15 +160,15 @@
     <div class="grid grid-cols-3 divide-x divide-[#111111] border-b border-[#111111]">
       <div class="p-4 md:p-8 flex flex-col justify-center">
         <p class="text-2xl md:text-4xl font-bold m-0">30 с</p>
-        <p class="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#666666] mt-1 md:mt-2">на підбір розміру</p>
+        <p class="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#525252] mt-1 md:mt-2">на підбір розміру</p>
       </div>
       <div class="p-4 md:p-8 flex flex-col justify-center">
         <p class="text-2xl md:text-4xl font-bold m-0">UA</p>
-        <p class="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#666666] mt-1 md:mt-2">пошито в україні</p>
+        <p class="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#525252] mt-1 md:mt-2">пошито в україні</p>
       </div>
       <div class="p-4 md:p-8 flex flex-col justify-center">
         <p class="text-2xl md:text-4xl font-bold m-0">0</p>
-        <p class="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#666666] mt-1 md:mt-2">очікувань</p>
+        <p class="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#525252] mt-1 md:mt-2">очікувань</p>
       </div>
     </div>
 
@@ -154,213 +177,210 @@
       <div class="p-8 md:p-12">
         <div class="w-10 h-10 bg-[#111111] text-white flex items-center justify-center font-bold text-sm mb-6">01</div>
         <h2 class="text-xl font-bold mb-3">Точна посадка</h2>
-        <p class="text-sm text-[#666666] leading-relaxed">Лекала побудовані на реальних пропорціях. Річ відмінно тримається на плечах, а не на вішалках.</p>
+        <p class="text-sm text-[#525252] leading-relaxed">Лекала побудовані на реальних пропорціях. Річ відмінно тримається на плечах, а не на вішалках.</p>
       </div>
       <div class="p-8 md:p-12">
         <div class="w-10 h-10 bg-[#111111] text-white flex items-center justify-center font-bold text-sm mb-6">02</div>
         <h2 class="text-xl font-bold mb-3">Локальне виробництво</h2>
-        <p class="text-sm text-[#666666] leading-relaxed">Крій і пошиття в Україні: короткий ланцюг постачання та контроль якості на кожному етапі.</p>
+        <p class="text-sm text-[#525252] leading-relaxed">Крій і пошиття в Україні: короткий ланцюг постачання та контроль якості на кожному етапі.</p>
       </div>
       <div class="p-8 md:p-12">
         <div class="w-10 h-10 bg-[#111111] text-white flex items-center justify-center font-bold text-sm mb-6">03</div>
         <h2 class="text-xl font-bold mb-3">Еко-матеріали</h2>
-        <p class="text-sm text-[#666666] leading-relaxed">Щільна бавовна, що служить роками, і мінімум пакування. Базові речі, які не потрібно міняти щосезону.</p>
+        <p class="text-sm text-[#525252] leading-relaxed">Щільна бавовна, що служить роками, і мінімум пакування. Базові речі, які не потрібно міняти щосезону.</p>
       </div>
     </section>
 
-    <!-- Каталог -->
+    <!-- Каталог (Оптимізовані зображення WebP + lazy loading + width/height) -->
     <section id="catalog" class="py-16 md:py-24 px-6 lg:px-12 border-b border-[#111111]">
       <header class="flex items-end justify-between mb-10">
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Каталог</h2>
-        <p class="text-[10px] font-bold uppercase tracking-widest text-[#666666] hidden md:block">Натисніть на фото для перегляду</p>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-[#525252] hidden md:block">Натисніть на фото для перегляду</p>
       </header>
 
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         
         <!-- Товар 1 -->
         <article class="flex flex-col h-full border border-[#111111] p-3 md:p-4 bg-white hover:shadow-lg transition-all duration-300 group">
-          <!-- Лаба 10: Інтеграція Fancybox у каталог (data-fancybox="catalog") -->
-          <a href="assets/images/tshirt.jpg" data-fancybox="catalog" data-caption="Футболка Heavyweight" class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111] block cursor-zoom-in relative">
+          <a href="assets/images/tshirt.webp" data-fancybox="catalog" data-caption="Футболка Heavyweight" aria-label="Збільшити фото: Футболка Heavyweight" class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111] block cursor-zoom-in relative">
             <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all z-10 flex items-center justify-center">
-              <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition-opacity"></i>
+              <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition-opacity" aria-hidden="true"></i>
             </div>
-            <img src="assets/images/tshirt.jpg" alt="Базова футболка Heavyweight" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 relative z-0">
+            <img src="assets/images/tshirt.webp" alt="Базова футболка Heavyweight" width="700" height="875" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 relative z-0">
           </a>
           <div class="flex flex-col flex-grow justify-between">
             <div>
               <h3 class="text-sm md:text-base font-bold leading-tight mb-1">Футболка Heavyweight</h3>
-              <p class="text-xs text-[#666666]">890 ₴</p>
+              <p class="text-xs text-[#525252]">890 ₴</p>
             </div>
-            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">Додати в кошик</button>
+            <button type="button" class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">Додати в кошик</button>
           </div>
         </article>
 
         <!-- Товар 2 -->
         <article class="flex flex-col h-full border border-[#111111] p-3 md:p-4 bg-white hover:shadow-lg transition-all duration-300 group">
-          <a href="assets/images/jeans.jpg" data-fancybox="catalog" data-caption="Джинси Straight Fit" class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111] block cursor-zoom-in relative">
+          <a href="assets/images/jeans.webp" data-fancybox="catalog" data-caption="Джинси Straight Fit" aria-label="Збільшити фото: Джинси Straight Fit" class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111] block cursor-zoom-in relative">
             <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all z-10 flex items-center justify-center">
-              <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition-opacity"></i>
+              <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition-opacity" aria-hidden="true"></i>
             </div>
-            <img src="assets/images/jeans.jpg" alt="Джинси Straight Fit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 relative z-0">
+            <img src="assets/images/jeans.webp" alt="Джинси Straight Fit" width="700" height="875" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 relative z-0">
           </a>
           <div class="flex flex-col flex-grow justify-between">
             <div>
               <h3 class="text-sm md:text-base font-bold leading-tight mb-1">Джинси Straight Fit</h3>
-              <p class="text-xs text-[#666666]">1 890 ₴</p>
+              <p class="text-xs text-[#525252]">1 890 ₴</p>
             </div>
-            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">Додати в кошик</button>
+            <button type="button" class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">Додати в кошик</button>
           </div>
         </article>
 
         <!-- Товар 3 -->
         <article class="flex flex-col h-full border border-[#111111] p-3 md:p-4 bg-white hover:shadow-lg transition-all duration-300 group">
-          <a href="assets/images/hoodie.jpg" data-fancybox="catalog" data-caption="Худі Oversize" class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111] block cursor-zoom-in relative">
+          <a href="assets/images/hoodie.webp" data-fancybox="catalog" data-caption="Худі Oversize" aria-label="Збільшити фото: Худі Oversize" class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111] block cursor-zoom-in relative">
             <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all z-10 flex items-center justify-center">
-              <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition-opacity"></i>
+              <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition-opacity" aria-hidden="true"></i>
             </div>
-            <img src="assets/images/hoodie.jpg" alt="Худі Oversize" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 relative z-0">
+            <img src="assets/images/hoodie.webp" alt="Худі Oversize" width="700" height="875" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 relative z-0">
           </a>
           <div class="flex flex-col flex-grow justify-between">
             <div>
               <h3 class="text-sm md:text-base font-bold leading-tight mb-1">Худі Oversize</h3>
-              <p class="text-xs text-[#666666]">2 190 ₴</p>
+              <p class="text-xs text-[#525252]">2 190 ₴</p>
             </div>
-            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">Додати в кошик</button>
+            <button type="button" class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">Додати в кошик</button>
           </div>
         </article>
 
         <!-- Товар 4 -->
         <article class="flex flex-col h-full border border-[#111111] p-3 md:p-4 bg-white hover:shadow-lg transition-all duration-300 group">
-          <a href="assets/images/sweatshirt.jpg" data-fancybox="catalog" data-caption="Світшот Relaxed Fit" class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111] block cursor-zoom-in relative">
+          <a href="assets/images/sweatshirt.webp" data-fancybox="catalog" data-caption="Світшот Relaxed Fit" aria-label="Збільшити фото: Світшот Relaxed Fit" class="w-full aspect-square md:aspect-[4/5] bg-gray-100 mb-4 overflow-hidden border border-[#111111] block cursor-zoom-in relative">
             <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all z-10 flex items-center justify-center">
-              <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition-opacity"></i>
+              <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition-opacity" aria-hidden="true"></i>
             </div>
-            <img src="assets/images/sweatshirt.jpg" alt="Світшот Relaxed Fit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 relative z-0">
+            <img src="assets/images/sweatshirt.webp" alt="Світшот Relaxed Fit" width="700" height="875" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 relative z-0">
           </a>
           <div class="flex flex-col flex-grow justify-between">
             <div>
               <h3 class="text-sm md:text-base font-bold leading-tight mb-1">Світшот Relaxed Fit</h3>
-              <p class="text-xs text-[#666666]">1 490 ₴</p>
+              <p class="text-xs text-[#525252]">1 490 ₴</p>
             </div>
-            <button class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">Додати в кошик</button>
+            <button type="button" class="w-full bg-[#111111] text-white py-3 mt-4 text-[10px] md:text-xs font-bold uppercase tracking-wider hover:opacity-80 transition-opacity">Додати в кошик</button>
           </div>
         </article>
 
       </div>
     </section>
 
-    <!-- Лаба 10: Swiper.js Слайдер Відгуків -->
+    <!-- Swiper.js Слайдер Відгуків -->
     <section class="py-16 md:py-24 px-6 lg:px-12 border-b border-[#111111] bg-white overflow-hidden">
       <div class="max-w-[1440px] mx-auto relative">
         
-        <!-- Лаба 10: Шапка слайдера з кастомними кнопками навігації -->
         <header class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Відгуки клієнтів</h2>
-            <p class="text-sm text-[#666666] mt-4">Що кажуть про наш базовий гардероб.</p>
+            <p class="text-sm text-[#525252] mt-4">Що кажуть про наш базовий гардероб.</p>
           </div>
           <div class="hidden md:flex items-center gap-2">
-            <button class="swiper-prev w-12 h-12 border border-[#111111] flex items-center justify-center hover:bg-[#111111] hover:text-white transition-colors cursor-pointer focus:outline-none">
-              <i class="fa-solid fa-arrow-left"></i>
+            <button type="button" aria-label="Попередній відгук" class="swiper-prev w-12 h-12 border border-[#111111] flex items-center justify-center hover:bg-[#111111] hover:text-white transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#111111]">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
             </button>
-            <button class="swiper-next w-12 h-12 border border-[#111111] flex items-center justify-center hover:bg-[#111111] hover:text-white transition-colors cursor-pointer focus:outline-none">
-              <i class="fa-solid fa-arrow-right"></i>
+            <button type="button" aria-label="Наступний відгук" class="swiper-next w-12 h-12 border border-[#111111] flex items-center justify-center hover:bg-[#111111] hover:text-white transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#111111]">
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
             </button>
           </div>
         </header>
 
-        <!-- Головний контейнер Swiper -->
         <div class="swiper reviews-swiper overflow-visible">
           <div class="swiper-wrapper mb-4">
             
             <div class="swiper-slide bg-gray-50 border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[4px_4px_0px_0px_#111111]">
-              <div class="flex text-[#111111] mb-4 text-xs">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <div class="flex text-[#111111] mb-4 text-xs" aria-label="Оцінка 5 з 5 зірок">
+                <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
               </div>
               <p class="text-sm italic mb-6 flex-grow">"Футболка Heavyweight просто ідеальна. Вона не втрачає форму після 10 праннів, як це буває з мас-маркетом."</p>
               <div class="flex items-center gap-4 border-t border-[#111111] pt-4">
                 <div>
-                  <h4 class="font-bold text-xs uppercase tracking-widest">Максим К.</h4>
-                  <p class="text-[10px] text-[#666666]">Київ, Україна</p>
+                  <h3 class="font-bold text-xs uppercase tracking-widest">Максим К.</h3>
+                  <p class="text-[10px] text-[#525252]">Київ, Україна</p>
                 </div>
               </div>
             </div>
 
             <div class="swiper-slide bg-gray-50 border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[4px_4px_0px_0px_#111111]">
-              <div class="flex text-[#111111] mb-4 text-xs">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <div class="flex text-[#111111] mb-4 text-xs" aria-label="Оцінка 5 з 5 зірок">
+                <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
               </div>
               <p class="text-sm italic mb-6 flex-grow">"Джинси сіли ідеально з першого разу завдяки вашому калькулятору розмірів. Дуже задоволений покупкою."</p>
               <div class="flex items-center gap-4 border-t border-[#111111] pt-4">
                 <div>
-                  <h4 class="font-bold text-xs uppercase tracking-widest">Олександр П.</h4>
-                  <p class="text-[10px] text-[#666666]">Львів, Україна</p>
+                  <h3 class="font-bold text-xs uppercase tracking-widest">Олександр П.</h3>
+                  <p class="text-[10px] text-[#525252]">Львів, Україна</p>
                 </div>
               </div>
             </div>
 
             <div class="swiper-slide bg-gray-50 border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[4px_4px_0px_0px_#111111]">
-              <div class="flex text-[#111111] mb-4 text-xs">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <div class="flex text-[#111111] mb-4 text-xs" aria-label="Оцінка 5 з 5 зірок">
+                <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
               </div>
               <p class="text-sm italic mb-6 flex-grow">"Худі дуже тепле і приємне до тіла. Мінімалізм і жодних зайвих логотипів — те, що я шукав."</p>
               <div class="flex items-center gap-4 border-t border-[#111111] pt-4">
                 <div>
-                  <h4 class="font-bold text-xs uppercase tracking-widest">Денис В.</h4>
-                  <p class="text-[10px] text-[#666666]">Одеса, Україна</p>
+                  <h3 class="font-bold text-xs uppercase tracking-widest">Денис В.</h3>
+                  <p class="text-[10px] text-[#525252]">Одеса, Україна</p>
                 </div>
               </div>
             </div>
 
             <div class="swiper-slide bg-gray-50 border border-[#111111] p-8 flex flex-col justify-between h-auto shadow-[4px_4px_0px_0px_#111111]">
-              <div class="flex text-[#111111] mb-4 text-xs">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <div class="flex text-[#111111] mb-4 text-xs" aria-label="Оцінка 5 з 5 зірок">
+                <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
               </div>
               <p class="text-sm italic mb-6 flex-grow">"Відмінний сервіс і швидка доставка. Якість тканини перевершила мої очікування. Однозначно замовлятиму ще."</p>
               <div class="flex items-center gap-4 border-t border-[#111111] pt-4">
                 <div>
-                  <h4 class="font-bold text-xs uppercase tracking-widest">Андрій М.</h4>
-                  <p class="text-[10px] text-[#666666]">Дніпро, Україна</p>
+                  <h3 class="font-bold text-xs uppercase tracking-widest">Андрій М.</h3>
+                  <p class="text-[10px] text-[#525252]">Дніпро, Україна</p>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Мобільна пагінація -->
           <div class="swiper-pagination md:hidden !relative !mt-6"></div>
         </div>
       </div>
     </section>
 
-    <!-- Секція: Відео та Карта (Лаба 7) -->
+    <!-- Секція: Відео та Карта (Оптимізований YouTube Facade без сторонніх cookies) -->
     <section id="about" class="py-16 md:py-24 px-6 lg:px-12 border-b border-[#111111] bg-gray-50">
       <div class="max-w-[1440px] mx-auto">
         <header class="mb-10 text-center md:text-left">
           <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Наше виробництво</h2>
-          <p class="text-sm text-[#666666] mt-4 max-w-xl">Подивіться, як створюється базовий одяг VERTEX.UA, та завітайте до нашого шоуруму у Львові.</p>
+          <p class="text-sm text-[#525252] mt-4 max-w-xl">Подивіться, як створюється базовий одяг VERTEX.UA, та завітайте до нашого шоуруму у Львові.</p>
         </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           
+          <!-- Відео виробництва (Click-to-load YouTube-nocookie) -->
           <div class="w-full flex flex-col">
             <p class="text-[10px] font-bold uppercase tracking-widest text-[#111111] mb-3">Процес створення</p>
-            <div class="w-full aspect-video border border-[#111111] overflow-hidden group">
-              <iframe 
-                src="https://www.youtube.com/embed/hRw6RC3ExSw?si=I0J9_7JP0PidaC08"
-                title="Процес виробництва одягу"
-                loading="lazy"
-                class="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-              </iframe>
+            <div id="yt-facade" class="w-full aspect-video border border-[#111111] overflow-hidden relative bg-[#111111] group cursor-pointer" role="button" tabindex="0" aria-label="Відтворити відео про процес виробництва одягу">
+              <img src="assets/images/hero_bg_web.webp" alt="Прев'ю відео виробництва" width="700" height="394" loading="lazy" class="w-full h-full object-cover opacity-50 grayscale group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                <span class="w-16 h-16 bg-white text-[#111111] border-2 border-[#111111] flex items-center justify-center text-xl shadow-[4px_4px_0px_0px_#111111] group-hover:bg-[#111111] group-hover:text-white transition-colors">
+                  <i class="fa-solid fa-play ml-1" aria-hidden="true"></i>
+                </span>
+                <span class="mt-3 bg-[#111111] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Дивитись відео виробництва</span>
+              </div>
             </div>
           </div>
 
+          <!-- Інтерактивна Карта Google Maps -->
           <div class="w-full flex flex-col">
             <p class="text-[10px] font-bold uppercase tracking-widest text-[#111111] mb-3">Наш шоурум (Львів)</p>
             <div class="w-full aspect-video lg:h-full border border-[#111111] p-1 bg-white">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2573.076540122793!2d24.02971701570776!3d49.84195207939615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add6c2e097db9%3A0x7770bc1ea21b2505!2sLviv%20Polytechnic%20National%20University!5e0!3m2!1sen!2sua!4v1680000000000!5m2!1sen!2sua" 
-                title="VERTEX.UA Шоурум"
+                title="Карта розташування шоуруму VERTEX.UA у Львові"
                 loading="lazy"
                 class="w-full h-full" 
                 style="border:0;" 
@@ -374,9 +394,9 @@
       </div>
     </section>
 
-  <!-- Лаба 11: Інтерактивний віджет "Розумний підбір розміру" -->
+    <!-- Інтерактивний віджет "Розумний підбір розміру" -->
     <section id="calculator" class="py-20 md:py-32 px-6 flex flex-col items-center border-b border-[#111111] bg-white">
-      <p class="text-[10px] font-bold uppercase tracking-widest text-[#666666] mb-4">Smart Sizing Engine</p>
+      <p class="text-[10px] font-bold uppercase tracking-widest text-[#525252] mb-4">Smart Sizing Engine</p>
       <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 max-w-2xl leading-tight">Розрахуйте ідеальний розмір та точні заміри лекал за 30 секунд</h2>
       
       <div class="w-full max-w-2xl bg-gray-50 border-2 border-[#111111] p-6 md:p-10 shadow-[8px_8px_0px_0px_#111111] md:shadow-[12px_12px_0px_0px_#111111]">
@@ -385,7 +405,6 @@
           <!-- 1–2. Стать та категорія виробу -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             
-            <!-- Стать (radio-кнопки) -->
             <div class="flex flex-col">
               <span class="text-[10px] font-bold uppercase tracking-widest mb-2">1. Стать</span>
               <div class="grid grid-cols-2 gap-2 h-full">
@@ -404,7 +423,6 @@
               </div>
             </div>
 
-            <!-- Категорія товару (select) -->
             <div class="flex flex-col">
               <label for="calc-category" class="text-[10px] font-bold uppercase tracking-widest mb-2">2. Категорія виробу</label>
               <select id="calc-category" class="w-full min-h-[46px] bg-white border border-[#111111] px-3.5 py-3 text-sm font-medium focus:outline-none focus:ring-1 focus:ring-[#111111] cursor-pointer">
@@ -420,45 +438,42 @@
           <!-- 3–5. Антропометричні параметри -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             
-            <!-- Зріст -->
             <div class="flex flex-col">
               <label for="calc-height" class="text-[10px] font-bold uppercase tracking-widest mb-2">Зріст (140–225) *</label>
               <div class="relative">
                 <input type="number" id="calc-height" min="140" max="225" step="1" value="180" required
                        class="w-full bg-white border border-[#111111] p-3 pr-10 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111] transition-colors"
                        aria-describedby="error-height">
-                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">см</span>
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#525252]">см</span>
               </div>
-              <p id="error-height" class="text-red-500 text-[11px] font-medium mt-1 hidden">Від 140 до 225 см</p>
+              <p id="error-height" class="text-red-600 text-[11px] font-medium mt-1 hidden">Від 140 до 225 см</p>
             </div>
 
-            <!-- Вага -->
             <div class="flex flex-col">
               <label for="calc-weight" class="text-[10px] font-bold uppercase tracking-widest mb-2">Вага (40–160) *</label>
               <div class="relative">
                 <input type="number" id="calc-weight" min="40" max="160" step="1" value="75" required
                        class="w-full bg-white border border-[#111111] p-3 pr-10 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111] transition-colors"
                        aria-describedby="error-weight">
-                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">кг</span>
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#525252]">кг</span>
               </div>
-              <p id="error-weight" class="text-red-500 text-[11px] font-medium mt-1 hidden">Від 40 до 160 кг</p>
+              <p id="error-weight" class="text-red-600 text-[11px] font-medium mt-1 hidden">Від 40 до 160 кг</p>
             </div>
 
-            <!-- Обхват грудей або талії (динамічно змінюється) -->
             <div class="flex flex-col">
               <label id="label-girth" for="calc-girth" class="text-[10px] font-bold uppercase tracking-widest mb-2">Груди (70–145) *</label>
               <div class="relative">
                 <input type="number" id="calc-girth" min="70" max="145" step="1" value="98" required
                        class="w-full bg-white border border-[#111111] p-3 pr-10 text-sm focus:outline-none focus:ring-1 focus:ring-[#111111] transition-colors"
                        aria-describedby="error-girth">
-                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#666666]">см</span>
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#525252]">см</span>
               </div>
-              <p id="error-girth" class="text-red-500 text-[11px] font-medium mt-1 hidden">Від 70 до 145 см</p>
+              <p id="error-girth" class="text-red-600 text-[11px] font-medium mt-1 hidden">Від 70 до 145 см</p>
             </div>
 
           </div>
 
-          <!-- 6. Бажана посадка по фігурі (radio-кнопки) -->
+          <!-- 6. Бажана посадка по фігурі -->
           <div class="flex flex-col">
             <span class="text-[10px] font-bold uppercase tracking-widest mb-2">3. Бажана посадка</span>
             <div class="grid grid-cols-3 gap-3">
@@ -466,27 +481,27 @@
                 <input type="radio" name="calc-fit" value="slim" class="peer sr-only">
                 <div class="border border-[#111111] bg-white p-3 text-center peer-checked:bg-[#111111] peer-checked:text-white transition-colors">
                   <span class="block text-xs font-bold uppercase tracking-wider">Slim</span>
-                  <span class="block text-[10px] opacity-70 mt-0.5">по фігурі</span>
+                  <span class="block text-[10px] opacity-80 mt-0.5">по фігурі</span>
                 </div>
               </label>
               <label class="cursor-pointer">
                 <input type="radio" name="calc-fit" value="regular" checked class="peer sr-only">
                 <div class="border border-[#111111] bg-white p-3 text-center peer-checked:bg-[#111111] peer-checked:text-white transition-colors">
                   <span class="block text-xs font-bold uppercase tracking-wider">Regular</span>
-                  <span class="block text-[10px] opacity-70 mt-0.5">класична</span>
+                  <span class="block text-[10px] opacity-80 mt-0.5">класична</span>
                 </div>
               </label>
               <label class="cursor-pointer">
                 <input type="radio" name="calc-fit" value="oversize" class="peer sr-only">
                 <div class="border border-[#111111] bg-white p-3 text-center peer-checked:bg-[#111111] peer-checked:text-white transition-colors">
                   <span class="block text-xs font-bold uppercase tracking-wider">Oversize</span>
-                  <span class="block text-[10px] opacity-70 mt-0.5">вільна</span>
+                  <span class="block text-[10px] opacity-80 mt-0.5">вільна</span>
                 </div>
               </label>
             </div>
           </div>
 
-          <!-- 7. Особливість фігури (checkbox) -->
+          <!-- 7. Особливість фігури -->
           <div>
             <label for="calc-anatomy" class="flex items-center gap-3 bg-white border border-[#111111] p-3.5 cursor-pointer select-none">
               <input type="checkbox" id="calc-anatomy" class="w-4 h-4 accent-[#111111] cursor-pointer">
@@ -498,32 +513,30 @@
           <div id="calc-result-box" class="bg-[#111111] text-white p-6 md:p-8 transition-colors">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#333333]">
               <div>
-                <p id="result-status" class="text-[10px] font-bold uppercase tracking-widest text-[#999999] mb-1">Рекомендований розмір (Чоловічий)</p>
+                <p id="result-status" class="text-[10px] font-bold uppercase tracking-widest text-[#b3b3b3] mb-1">Рекомендований розмір (Чоловічий)</p>
                 <p id="result-size" class="text-3xl md:text-4xl font-extrabold tracking-tight">L</p>
               </div>
-              <button type="button" id="calc-reset" class="self-start sm:self-center border border-[#444444] text-[#cccccc] hover:border-white hover:text-white px-4 py-2 text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer">
+              <button type="button" id="calc-reset" class="self-start sm:self-center border border-[#666666] text-[#e5e5e5] hover:border-white hover:text-white px-4 py-2 text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer">
                 Скинути параметри
               </button>
             </div>
 
-            <!-- Сітка точних замірів виробу -->
             <div class="grid grid-cols-3 gap-4 py-5 border-b border-[#333333] text-center sm:text-left">
               <div>
-                <p id="metric-1-label" class="text-[10px] uppercase tracking-widest text-[#999999]">Ширина грудей</p>
+                <p id="metric-1-label" class="text-[10px] uppercase tracking-widest text-[#b3b3b3]">Ширина грудей</p>
                 <p id="metric-1-val" class="text-lg md:text-xl font-bold mt-1">58 см</p>
               </div>
               <div>
-                <p id="metric-2-label" class="text-[10px] uppercase tracking-widest text-[#999999]">Довжина спини</p>
+                <p id="metric-2-label" class="text-[10px] uppercase tracking-widest text-[#b3b3b3]">Довжина спини</p>
                 <p id="metric-2-val" class="text-lg md:text-xl font-bold mt-1">72 см</p>
               </div>
               <div>
-                <p id="metric-3-label" class="text-[10px] uppercase tracking-widest text-[#999999]">Довжина рукава</p>
+                <p id="metric-3-label" class="text-[10px] uppercase tracking-widest text-[#b3b3b3]">Довжина рукава</p>
                 <p id="metric-3-val" class="text-lg md:text-xl font-bold mt-1">23 см</p>
               </div>
             </div>
 
-            <!-- Текстова рекомендація -->
-            <p id="result-advice" class="text-xs text-[#cccccc] mt-4 leading-relaxed">
+            <p id="result-advice" class="text-xs text-[#e5e5e5] mt-4 leading-relaxed">
               Оптимальний баланс по плечах та довжині для чоловічої футболки (180 см / 75 кг, посадка REGULAR).
             </p>
           </div>
@@ -532,38 +545,38 @@
       </div>
     </section>
 
-    <!-- Лаба 9: Форма зворотного зв'язку -->
+    <!-- Форма зворотного зв'язку -->
     <section id="feedback" class="py-16 md:py-24 px-6 lg:px-12 bg-white border-b border-[#111111]">
       <div class="max-w-[600px] mx-auto">
         <header class="mb-10 text-center">
           <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Залишилися питання?</h2>
-          <p class="text-sm text-[#666666] mt-4">Заповніть форму, і наш менеджер зв'яжеться з вами.</p>
+          <p class="text-sm text-[#525252] mt-4">Заповніть форму, і наш менеджер зв'яжеться з вами.</p>
         </header>
 
         <form id="feedbackForm" class="space-y-6" novalidate>
           <div>
             <label for="username" class="block text-xs font-bold uppercase tracking-widest text-[#111111] mb-2">Ваше ім'я *</label>
             <input type="text" id="username" name="username" class="w-full border border-[#111111] p-4 text-sm focus:outline-none focus:ring-1 focus:ring-black transition-all" aria-describedby="usernameError">
-            <p id="usernameError" class="text-red-500 text-xs mt-1 hidden">Ім'я повинно містити щонайменше 2 символи.</p>
+            <p id="usernameError" class="text-red-600 text-xs mt-1 hidden">Ім'я повинно містити щонайменше 2 символи.</p>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label for="phone" class="block text-xs font-bold uppercase tracking-widest text-[#111111] mb-2">Телефон *</label>
               <input type="tel" id="phone" name="phone" class="w-full border border-[#111111] p-4 text-sm focus:outline-none focus:ring-1 focus:ring-black transition-all" aria-describedby="phoneError" placeholder="+380XXXXXXXXX">
-              <p id="phoneError" class="text-red-500 text-xs mt-1 hidden">Введіть коректний номер (+380...).</p>
+              <p id="phoneError" class="text-red-600 text-xs mt-1 hidden">Введіть коректний номер (+380...).</p>
             </div>
             <div>
               <label for="email" class="block text-xs font-bold uppercase tracking-widest text-[#111111] mb-2">Email *</label>
               <input type="email" id="email" name="email" class="w-full border border-[#111111] p-4 text-sm focus:outline-none focus:ring-1 focus:ring-black transition-all" aria-describedby="emailError">
-              <p id="emailError" class="text-red-500 text-xs mt-1 hidden">Введіть коректний формат email.</p>
+              <p id="emailError" class="text-red-600 text-xs mt-1 hidden">Введіть коректний формат email.</p>
             </div>
           </div>
 
           <div>
             <label for="message" class="block text-xs font-bold uppercase tracking-widest text-[#111111] mb-2">Повідомлення *</label>
             <textarea id="message" name="message" rows="4" class="w-full border border-[#111111] p-4 text-sm focus:outline-none focus:ring-1 focus:ring-black transition-all resize-y" aria-describedby="messageError"></textarea>
-            <p id="messageError" class="text-red-500 text-xs mt-1 hidden">Повідомлення занадто коротке (мінімум 10 символів).</p>
+            <p id="messageError" class="text-red-600 text-xs mt-1 hidden">Повідомлення занадто коротке (мінімум 10 символів).</p>
           </div>
 
           <div class="flex items-start">
@@ -572,7 +585,7 @@
             </div>
             <div class="ml-3 text-sm">
               <label for="agreement" class="font-medium text-[#111111]">Я погоджуюсь на обробку персональних даних.</label>
-              <p id="agreementError" class="text-red-500 text-xs mt-1 hidden">Необхідна ваша згода.</p>
+              <p id="agreementError" class="text-red-600 text-xs mt-1 hidden">Необхідна ваша згода.</p>
             </div>
           </div>
 
@@ -586,11 +599,11 @@
   </main>
 
   <!-- Модальне вікно успіху -->
-  <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 hidden" aria-modal="true" role="dialog">
+  <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 hidden" aria-modal="true" role="dialog" aria-labelledby="modalTitle">
     <div class="bg-white p-8 max-w-sm w-full mx-4 border-2 border-[#111111] text-center" id="modalContent">
-      <h3 class="text-xl font-bold uppercase mb-4">Дякуємо!</h3>
-      <p class="text-sm text-[#666666] mb-6">Форма успішно пройшла клієнтську валідацію. Демонстрація успішного надсилання.</p>
-      <button id="closeModalBtn" class="bg-[#111111] text-white font-bold uppercase text-xs py-3 px-6 hover:bg-[#333333] transition-colors w-full">Закрити</button>
+      <h3 id="modalTitle" class="text-xl font-bold uppercase mb-4">Дякуємо!</h3>
+      <p class="text-sm text-[#525252] mb-6">Форма успішно пройшла клієнтську валідацію. Демонстрація успішного надсилання.</p>
+      <button id="closeModalBtn" type="button" class="bg-[#111111] text-white font-bold uppercase text-xs py-3 px-6 hover:bg-[#333333] transition-colors w-full">Закрити</button>
     </div>
   </div>
 
@@ -599,35 +612,35 @@
     <div class="px-6 lg:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 mb-12">
       <div class="lg:pr-10">
         <p class="font-bold text-base mb-4 text-[#111111]">VERTEX.UA</p>
-        <p class="text-sm text-[#666666] leading-relaxed">Базовий одяг зручного крою. Пошито в Україні.</p>
+        <p class="text-sm text-[#525252] leading-relaxed">Базовий одяг зручного крою. Пошито в Україні.</p>
       </div>
       <div>
         <p class="text-[11px] font-bold uppercase tracking-widest mb-6 text-[#111111]">Магазин</p>
-        <ul class="grid gap-4 text-sm text-[#666666]">
+        <ul class="grid gap-4 text-sm text-[#525252]">
           <li><a href="#catalog" class="hover:text-[#111111] transition-colors">Каталог</a></li>
           <li><a href="#calculator" class="hover:text-[#111111] transition-colors">Розумний підбір</a></li>
-          <li><a href="#" class="hover:text-[#111111] transition-colors">Розмірна сітка</a></li>
+          <li><a href="#calculator" class="hover:text-[#111111] transition-colors">Розмірна сітка</a></li>
         </ul>
       </div>
       <div>
         <p class="text-[11px] font-bold uppercase tracking-widest mb-6 text-[#111111]">Бренд</p>
-        <ul class="grid gap-4 text-sm text-[#666666]">
+        <ul class="grid gap-4 text-sm text-[#525252]">
           <li><a href="#features" class="hover:text-[#111111] transition-colors">Про нас</a></li>
           <li><a href="#about" class="hover:text-[#111111] transition-colors">Виробництво</a></li>
-          <li><a href="#" class="hover:text-[#111111] transition-colors">Матеріали</a></li>
+          <li><a href="#features" class="hover:text-[#111111] transition-colors">Матеріали</a></li>
         </ul>
       </div>
       <div>
         <p class="text-[11px] font-bold uppercase tracking-widest mb-6 text-[#111111]">Допомога</p>
-        <ul class="grid gap-4 text-sm text-[#666666]">
-          <li><a href="#" class="hover:text-[#111111] transition-colors">Доставка</a></li>
-          <li><a href="#" class="hover:text-[#111111] transition-colors">Повернення</a></li>
+        <ul class="grid gap-4 text-sm text-[#525252]">
+          <li><a href="#feedback" class="hover:text-[#111111] transition-colors">Доставка</a></li>
+          <li><a href="#feedback" class="hover:text-[#111111] transition-colors">Повернення</a></li>
           <li><a href="#feedback" class="hover:text-[#111111] transition-colors">Контакти</a></li>
         </ul>
       </div>
     </div>
     <div class="w-full">
-      <img src="assets/images/logo.svg" alt="VERTEX.UA" class="block w-full h-auto">
+      <img src="assets/images/logo.svg" alt="VERTEX.UA" width="1440" height="240" loading="lazy" class="block w-full h-auto">
     </div>
     <div class="border-t-[3px] border-[#111111] px-6 lg:px-12 py-6">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-[#111111] font-bold uppercase tracking-[0.15em]">
@@ -637,21 +650,20 @@
     </div>
   </footer>
 
-  <!-- Скрипт валідації форми (Лаба 9) -->
-  <script src="assets/validation.js"></script>
+  <!-- Підключення скриптів з атрибутом defer (не блокують рендеринг) -->
+  <script src="assets/validation.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script> 
+  <script src="assets/widget.js" defer></script>
 
-  <!-- Лаба 10: Скрипти бібліотек через CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script> 
-
-  <!-- Лаба 10: Ініціалізація плагінів (Конфігурація) -->
+  <!-- Ініціалізація плагінів та YouTube-фасаду -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       
-      // 1. Ініціалізація Typed.js (Друкований текст)
-      if (document.querySelector('#typed-text')) {
-        const typed = new Typed('#typed-text', {
+      // 1. Ініціалізація Typed.js
+      if (document.querySelector('#typed-text') && typeof Typed !== 'undefined') {
+        new Typed('#typed-text', {
           strings: ['Створено для міста.', 'На кожен день.', 'Твій ідеальний розмір.'],
           typeSpeed: 60,
           backSpeed: 40,
@@ -662,9 +674,9 @@
         });
       }
 
-      // 2. Ініціалізація Swiper.js (Слайдер відгуків)
-      if (document.querySelector('.reviews-swiper')) {
-        const swiper = new Swiper('.reviews-swiper', {
+      // 2. Ініціалізація Swiper.js
+      if (document.querySelector('.reviews-swiper') && typeof Swiper !== 'undefined') {
+        new Swiper('.reviews-swiper', {
           loop: true,
           spaceBetween: 24,
           autoplay: {
@@ -673,7 +685,7 @@
             pauseOnMouseEnter: true, 
           },
           navigation: {
-            nextEl: '.swiper-next', // Підключення кастомних кнопок
+            nextEl: '.swiper-next',
             prevEl: '.swiper-prev',
           },
           pagination: {
@@ -688,22 +700,37 @@
         });
       }
 
-      // 3. Ініціалізація Fancybox v5 (Зум фотографій в Каталозі)
-      Fancybox.bind("[data-fancybox='catalog']", {
-        Carousel: {
-          Transition: "fade", 
-        },
-        Images: {
-          Panzoom: {
-            maxScale: 2, 
-          },
-        },
-      });
+      // 3. Ініціалізація Fancybox v5
+      if (typeof Fancybox !== 'undefined') {
+        Fancybox.bind("[data-fancybox='catalog']", {
+          Carousel: { Transition: "fade" },
+          Images: { Panzoom: { maxScale: 2 } },
+        });
+      }
+
+      // 4. Click-to-load YouTube Facade (без сторонніх cookies при завантаженні)
+      const ytFacade = document.getElementById('yt-facade');
+      if (ytFacade) {
+        const loadVideo = () => {
+          const iframe = document.createElement('iframe');
+          iframe.src = 'https://www.youtube-nocookie.com/embed/hRw6RC3ExSw?autoplay=1';
+          iframe.title = 'Процес виробництва одягу VERTEX.UA';
+          iframe.className = 'w-full h-full';
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+          iframe.allowFullscreen = true;
+          ytFacade.replaceChildren(iframe);
+        };
+        ytFacade.addEventListener('click', loadVideo);
+        ytFacade.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            loadVideo();
+          }
+        });
+      }
 
     });
   </script>
-
-<script src="assets/widget.js"></script>
 
 </body>
 </html>
